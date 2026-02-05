@@ -3,518 +3,555 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>경계선 지능 중학생의 이해와 지도 방안</title>
+    <title>하늘쌤과 함께하는 2026학년도 역사 기행</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap');
-
-        :root {
-            --bg-color: #1a2a4d; /* 신뢰감 있는 딥 블루 */
-            --card-bg-color: #243b67;
-            --text-color: #e0e0e0;
-            --header-color: #ffffff;
-            --accent-color: #ffb454; /* 딥 블루의 보색 계열 (오렌지/골드) */
-            --accent-strong-color: #ff9d21;
-            --border-color: rgba(255, 255, 255, 0.1);
-        }
-
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        
         body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.8;
-            font-size: 16px;
+            font-family: 'Noto Sans KR', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            overflow-x: hidden;
+            position: relative;
         }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            padding: 100px 0 60px 0;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--header-color);
-            margin-bottom: 1rem;
-            letter-spacing: -1px;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            color: var(--accent-color);
-            font-weight: 600;
-        }
-
-        nav.sticky-nav {
-            position: sticky;
+        
+        /* 배경 애니메이션 요소들 */
+        .background-elements {
+            position: fixed;
             top: 0;
-            background: rgba(26, 42, 77, 0.85);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            z-index: 100;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border-color);
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-        
-        nav.sticky-nav::-webkit-scrollbar {
-            display: none; /* Hide scrollbar */
-        }
-
-        nav .nav-links {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-        }
-
-        nav .nav-links li a {
-            display: block;
-            padding: 8px 16px;
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 600;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        nav .nav-links li a:hover,
-        nav .nav-links li a.active {
-            background-color: var(--accent-color);
-            color: var(--bg-color);
-        }
-
-        main section {
-            padding: 80px 0;
-            border-bottom: 1px solid var(--border-color);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        
-        main section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--accent-strong-color);
-            display: inline-block;
-        }
-
-        h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--header-color);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        ul, ol {
-            padding-left: 20px;
-        }
-        
-        ul li, ol li {
-            margin-bottom: 1.2rem;
-        }
-        
-        ul li::marker {
-            color: var(--accent-color);
-        }
-
-        strong {
-            color: var(--accent-strong-color);
-            font-weight: 600;
-        }
-
-        /* Section Specific Styles */
-        .summary-list li {
-            padding-left: 10px;
-            border-left: 3px solid var(--accent-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            list-style: none;
-        }
-
-        table {
+            left: 0;
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 2rem;
-            background-color: var(--card-bg-color);
-            border-radius: 8px;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
             overflow: hidden;
         }
-
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        th {
-            background-color: rgba(0,0,0,0.2);
-            color: var(--accent-color);
-            font-weight: 600;
-        }
-
-        blockquote {
-            background: var(--card-bg-color);
-            border-left: 5px solid var(--accent-strong-color);
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 0 8px 8px 0;
-            font-style: italic;
-            color: var(--header-color);
-        }
-
-        .checklist {
-            list-style: none;
-            padding-left: 0;
-        }
-        .checklist li {
-            position: relative;
-            padding-left: 35px;
-            margin-bottom: 1rem;
-        }
-        .checklist li::before {
-            content: '□';
-            position: absolute;
-            left: 0;
-            top: 0;
-            font-size: 1.5rem;
-            color: var(--accent-color);
-        }
-
-        .highlight-box {
-            background-color: var(--card-bg-color);
-            border: 1px solid var(--border-color);
-            border-left: 5px solid var(--accent-color);
-            padding: 25px;
-            margin-top: 30px;
-            border-radius: 8px;
-        }
-
-        .highlight-box h3 {
-            margin-top: 0;
-            color: var(--accent-color);
-        }
         
-        .script-list > li {
-            list-style-type: none;
-            position: relative;
-            padding: 10px 0 10px 40px;
-        }
-        
-        .script-list > li::before {
-            content: counter(list-item);
+        /* 구름 */
+        .cloud {
             position: absolute;
-            left: 0;
-            top: 10px;
-            width: 30px;
-            height: 30px;
+            background: rgba(255, 255, 255, 0.3);
             border-radius: 50%;
-            background-color: var(--accent-color);
-            color: var(--bg-color);
-            font-weight: 700;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            filter: blur(20px);
         }
-
-        #final-principle {
+        
+        .cloud-1 {
+            width: 200px;
+            height: 80px;
+            top: 10%;
+            left: -100px;
+            animation: floatCloud 30s linear infinite;
+        }
+        
+        .cloud-2 {
+            width: 150px;
+            height: 60px;
+            top: 25%;
+            left: -80px;
+            animation: floatCloud 25s linear infinite;
+            animation-delay: -10s;
+        }
+        
+        .cloud-3 {
+            width: 180px;
+            height: 70px;
+            top: 60%;
+            left: -90px;
+            animation: floatCloud 35s linear infinite;
+            animation-delay: -20s;
+        }
+        
+        @keyframes floatCloud {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(100vw + 200px)); }
+        }
+        
+        /* 떠다니는 이모지 */
+        .floating-emoji {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .emoji-1 { top: 15%; left: 10%; animation-delay: 0s; }
+        .emoji-2 { top: 20%; right: 15%; animation-delay: 1s; }
+        .emoji-3 { top: 45%; left: 5%; animation-delay: 2s; }
+        .emoji-4 { top: 70%; right: 10%; animation-delay: 3s; }
+        .emoji-5 { top: 80%; left: 15%; animation-delay: 4s; }
+        .emoji-6 { top: 35%; right: 5%; animation-delay: 5s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        /* 반짝이는 별 */
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+        
+        .star:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+        .star:nth-child(2) { top: 30%; left: 80%; animation-delay: 0.5s; }
+        .star:nth-child(3) { top: 50%; left: 30%; animation-delay: 1s; }
+        .star:nth-child(4) { top: 70%; left: 70%; animation-delay: 1.5s; }
+        .star:nth-child(5) { top: 85%; left: 40%; animation-delay: 2s; }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+        
+        /* 메인 컨테이너 */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* 헤더 영역 */
+        .header {
             text-align: center;
-            border-bottom: none;
-            padding-bottom: 100px;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease-out;
         }
-
-        #final-principle h2 {
-            border: none;
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        #final-principle blockquote {
+        
+        .header-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: white;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        .header h1 span {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ffd700, #ffeb3b, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        /* 여행 경로 라인 */
+        .journey-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, 
+                rgba(255,255,255,0.1) 0%, 
+                rgba(255,255,255,0.4) 50%, 
+                rgba(255,255,255,0.1) 100%);
+            transform: translateX(-50%);
+            z-index: 0;
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .journey-line { display: block; }
+        }
+        
+        /* 카드 그리드 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            position: relative;
+        }
+        
+        /* 카드 스타일 */
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 30px;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+        
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .card:hover::before {
+            left: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.25);
+        }
+        
+        /* 카드 아이콘 */
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            flex-shrink: 0;
+            position: relative;
+        }
+        
+        .card-icon::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            background: inherit;
+            filter: blur(15px);
+            opacity: 0.5;
+            z-index: -1;
+        }
+        
+        .card:nth-child(1) .card-icon { background: linear-gradient(135deg, #ff6b6b, #ee5a5a); }
+        .card:nth-child(2) .card-icon { background: linear-gradient(135deg, #4ecdc4, #44a08d); }
+        .card:nth-child(3) .card-icon { background: linear-gradient(135deg, #a8e6cf, #88d8b0); }
+        .card:nth-child(4) .card-icon { background: linear-gradient(135deg, #ffd93d, #f6c90e); }
+        .card:nth-child(5) .card-icon { background: linear-gradient(135deg, #6c5ce7, #a29bfe); }
+        
+        /* 카드 내용 */
+        .card-content {
+            flex: 1;
+        }
+        
+        .card-number {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        
+        .card-desc {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+        
+        /* 카드 화살표 */
+        .card-arrow {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+        
+        .card:hover .card-arrow {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateX(5px);
+        }
+        
+        /* 푸터 */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        .footer-emoji {
             font-size: 1.5rem;
-            font-style: normal;
-            border-left: none;
-            border-top: 3px solid var(--accent-strong-color);
-            border-bottom: 3px solid var(--accent-strong-color);
-            background: none;
-            padding: 40px 0;
-            border-radius: 0;
-            color: var(--header-color);
-            font-weight: 600;
+            margin-bottom: 10px;
         }
-        #final-principle strong {
-            color: var(--accent-strong-color);
+        
+        /* 여행 스탬프 데코 */
+        .stamp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            border: 3px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.5);
+            transform: rotate(-15deg);
+            animation: stampPulse 3s ease-in-out infinite;
         }
-
+        
+        .stamp-icon {
+            font-size: 1.5rem;
+            margin-bottom: 3px;
+        }
+        
+        @keyframes stampPulse {
+            0%, 100% { transform: rotate(-15deg) scale(1); }
+            50% { transform: rotate(-15deg) scale(1.05); }
+        }
+        
+        /* 모바일 대응 */
         @media (max-width: 600px) {
-            header h1 {
-                font-size: 2rem;
+            .header h1 {
+                font-size: 1.8rem;
             }
-            h2 {
+            
+            .header h1 span {
+                font-size: 1.4rem;
+            }
+            
+            .card {
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .card-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+            
+            .card-arrow {
+                display: none;
+            }
+            
+            .stamp {
+                width: 60px;
+                height: 60px;
+                bottom: 10px;
+                right: 10px;
+            }
+            
+            .floating-emoji {
                 font-size: 1.5rem;
-            }
-            nav.sticky-nav {
-                padding: 10px;
-            }
-            nav .nav-links {
-                justify-content: flex-start;
-                padding: 0 10px;
             }
         }
     </style>
 </head>
 <body>
-
-    <header>
-        <div class="container">
-            <h1>경계선 지능 중학생의<br>이해와 지도 방안</h1>
-            <p>— 최종본 —</p>
+    <!-- 배경 요소들 -->
+    <div class="background-elements">
+        <!-- 구름 -->
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+        
+        <!-- 떠다니는 이모지 -->
+        <div class="floating-emoji emoji-1">🏛️</div>
+        <div class="floating-emoji emoji-2">📜</div>
+        <div class="floating-emoji emoji-3">🗺️</div>
+        <div class="floating-emoji emoji-4">⛩️</div>
+        <div class="floating-emoji emoji-5">🎎</div>
+        <div class="floating-emoji emoji-6">🏯</div>
+        
+        <!-- 반짝이는 별 -->
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+    
+    <div class="container">
+        <!-- 헤더 -->
+        <header class="header">
+            <div class="header-icon">✈️</div>
+            <h1>
+                하늘쌤과 함께하는
+                <span>2026학년도 역사 기행</span>
+            </h1>
+            <p class="header-subtitle">
+                <span>🧭</span> 과거로 떠나는 신나는 여행! <span>🎒</span>
+            </p>
+        </header>
+        
+        <!-- 카드 메뉴 -->
+        <div class="card-grid">
+            <!-- 1. 역사 기행 핵심 내용 -->
+            <a href="korean_history_student_ori.html" class="card">
+                <div class="card-icon">🏛️</div>
+                <div class="card-content">
+                    <div class="card-number">Station 01</div>
+                    <div class="card-title">문시중 역사 기행 핵심 내용</div>
+                    <div class="card-desc">우리 역사의 핵심 포인트를 한눈에! 여행 전 필수 체크 ✓</div>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+            
+            <!-- 2. 2학기 배운 내용 -->
+            <a href="joseon_history_flow.html" class="card">
+                <div class="card-icon">📚</div>
+                <div class="card-content">
+                    <div class="card-number">Station 02</div>
+                    <div class="card-title">2025학년도 2학기에 배운 내용은?</div>
+                    <div class="card-desc">조선 역사의 흐름을 타임라인으로 복습해요 🕰️</div>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+            
+            <!-- 3. 수행평가 가이드라인 -->
+            <a href="performance_assessment_guidelines.html" class="card">
+                <div class="card-icon">📝</div>
+                <div class="card-content">
+                    <div class="card-number">Station 03</div>
+                    <div class="card-title">수행평가 가이드라인</div>
+                    <div class="card-desc">수행평가, 어떻게 준비할까? 단계별 안내서 🗺️</div>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+            
+            <!-- 4. 수행평가 채점기준 -->
+            <a href="perfomance_Task_Evaluation_Criteria.html" class="card">
+                <div class="card-icon">⭐</div>
+                <div class="card-content">
+                    <div class="card-number">Station 04</div>
+                    <div class="card-title">수행평가 채점기준</div>
+                    <div class="card-desc">어떻게 평가받을까? 채점 기준을 미리 확인! 📊</div>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+            
+            <!-- 5. 교과서 학습하기 -->
+            <a href="https://skyiu2017-ux.github.io/history-class/" class="card" target="_blank">
+                <div class="card-icon">🎓</div>
+                <div class="card-content">
+                    <div class="card-number">Station 05</div>
+                    <div class="card-title">2026학년도 교과서 학습하기</div>
+                    <div class="card-desc">새 학년 교과서 내용을 미리 만나보세요! 🚀</div>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
         </div>
-    </header>
-
-    <nav class="sticky-nav">
-        <ul class="nav-links">
-            <li><a href="#summary">핵심 요약</a></li>
-            <li><a href="#definition">정의·현황</a></li>
-            <li><a href="#development">발달 특징</a></li>
-            <li><a href="#cognitive">인지 영역</a></li>
-            <li><a href="#emotion">정서·사회성</a></li>
-            <li><a href="#principles">지도 원칙</a></li>
-            <li><a href="#counseling">부모 상담</a></li>
-            <li><a href="#assessment">평가·지원</a></li>
-            <li><a href="#checklist">체크리스트</a></li>
-            <li><a href="#final-principle">최종 원칙</a></li>
-        </ul>
-    </nav>
-
-    <main class="container">
-
-        <section id="summary">
-            <h2>1) 핵심 7줄 요약</h2>
-            <ol class="summary-list">
-                <li><strong>경계선 지능(BIF, IQ 71–84)</strong> 학생은 특수·일반 교육의 경계에 있어 <strong>중학교에서 ‘조용히 숨는’</strong> 경향으로 선별이 어렵다.</li>
-                <li><strong>지능의 하위요소</strong>(언어이해·시공간·유동추론·작업기억·처리속도)의 <strong>불균형</strong>이 학업·행동·정서 전반을 좌우한다.</li>
-                <li>학업은 <strong>선택적 주의, 절차 따르기, 추상화·요약</strong>에서 특히 취약하고, <strong>서술/추론형 평가</strong>에서 한계가 두드러진다.</li>
-                <li>실패 누적은 <strong>불안·우울·충동/회피·고립</strong>으로 이어지기 쉬워 <strong>또래 관계</strong>에서 2차 문제가 생긴다.</li>
-                <li><strong>그래픽 조직자·쉬운 어휘·과제 단계화·사전예고·암기전략 지도</strong>가 수업 핵심 처방이다.</li>
-                <li><strong>세밀한 감정 표현 어휘 교육이 필수</strong>다. 어휘 부족 때문에 자신의 상태를 인식·표현하지 못해 <strong>엉뚱하거나 과격한 말</strong>로 표출되므로, 감정을 <strong>정확한 단어로 명명</strong>하도록 훈련해야 한다.</li>
-                <li>부모상담은 <strong>공감 → 학교 시도기록 공유 → 가정 과제 합의(초2–4 기초 재훈련) → 2주 재점검</strong>이 효과적이며, <strong>교사 효능감</strong>이 향상의 최대 <strong>변인</strong>이다.</li>
-            </ol>
-        </section>
-
-        <section id="definition">
-            <h2>2) 정의·현황·정책</h2>
-            <ul>
-                <li><strong>정의</strong>: IQ 71–84(지적장애 기준 70 바로 위), 개인차 큼.</li>
-                <li><strong>현장 추정 빈도</strong>: 학급당 <strong>약 2–3명</strong>.</li>
-                <li><strong>선별 난점</strong>: “조용한 ADHD 여학생” 유형이 최상 난이도(수업 태도 양호, <strong>시험에서만</strong> 문제 노출).</li>
-                <li><strong>정책 맥락</strong>: 2016 초중등교육법에 “느린 학습자” 반영 → 2024.7.3 <strong>지원 방안 발표</strong>(전수 조사, 선별도구, 진로·학습 지원 등).</li>
-            </ul>
-        </section>
-
-        <section id="development">
-            <h2>3) 발달 단계별 특징</h2>
-            <h3>초등</h3>
-            <p>한글·음운 변동 지연 → 읽기 가능해도 <strong>이해·요약·추론</strong> 취약. 받아내림·분수 등 절차·공간 과제에서 급락, 또래관계 어려움 시작.</p>
-            <h3>중등</h3>
-            <p>과제 <strong>시작/유지</strong> 어려움, <strong>서술형</strong> 급락. 조용하지만 학업·정서 부담 ↑.</p>
-            <h3>고교–성인</h3>
-            <p>대학의 <strong>비구조화·팀플·자기주도</strong> 요구에서 재노출, 취업은 되나 <strong>고용 유지</strong> 어려움. 일부는 성인기 <strong>정신건강 문제</strong> 경험.</p>
-        </section>
-
-        <section id="cognitive">
-            <h2>4) 지능의 하위요소(인지 영역)와 학습 영향</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>영역(하위요소)</th>
-                        <th>전형적 약점</th>
-                        <th>수업/평가 영향</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>언어이해</td>
-                        <td>어휘·추상개념 취약</td>
-                        <td>독해·요약·문장제·추론형 서술에 약함</td>
-                    </tr>
-                    <tr>
-                        <td>시공간</td>
-                        <td>시각-공간 처리 저하</td>
-                        <td>받아내림·분수·도형·절차 정렬 어려움</td>
-                    </tr>
-                    <tr>
-                        <td>유동추론</td>
-                        <td>관계·패턴·전략 미흡</td>
-                        <td>낯선 문제 해결·메타인지 점검 곤란</td>
-                    </tr>
-                    <tr>
-                        <td>작업기억</td>
-                        <td>정보 유지·조작 약함</td>
-                        <td>다단계 지시 이행 실패, 과제 중단</td>
-                    </tr>
-                    <tr>
-                        <td>처리속도</td>
-                        <td>느린 처리</td>
-                        <td>시간 내 수행·검사 완수 어려움</td>
-                    </tr>
-                </tbody>
-            </table>
-            <blockquote>수업에서 보이는 양상: <strong>핵심/비핵심 구분 실패</strong>, 정보 <strong>파편화</strong>, “모르면 멈춤→감정 반응”, 수면·피로 시 <strong>통합 실패</strong>.</blockquote>
-        </section>
-
-        <section id="emotion">
-            <h2>5) 정서·사회성 이해</h2>
-            <ul>
-                <li><strong>정서 발달 수준</strong>: 대략 9–13세 양상(개인차).</li>
-                <li><strong>사고 경향</strong>: 이분법·파국화, <strong>조망수용 부족</strong>(타인 관점 추정 어려움).</li>
-                <li><strong>사회기술 결핍</strong>: 경청·거절·요청·칭찬·용모 관리 등 <strong>명시적 훈련</strong> 필요.</li>
-                <li><strong>또래 요인</strong>: 인정 욕구 ↑ vs 기술 부족 → <strong>이용/갈등</strong> 반복.</li>
-            </ul>
-        </section>
-
-        <section id="principles">
-            <h2>6) 교실 지도 핵심 13원칙</h2>
-            <ol>
-                <li><strong>사전예고</strong>: 전환·마감 5–10분 전 알림(불안 ↓).</li>
-                <li><strong>그래픽 조직자 최우선</strong>: 표·절차카드·벤다이어그램·아이콘으로 <strong>구조 먼저</strong>.</li>
-                <li><strong>언어 단순화</strong>: <strong>초등 고학년 어휘</strong>로 설명, “내 말로 다시 말해보기” 루틴.</li>
-                <li><strong>과제 단계화</strong>: 모든 과제 <strong>1–2–3–4</strong> 절차·체크박스.</li>
-                <li><strong>모델링→유도연습→독립연습</strong>: 예시 답안+생각소리(Think-aloud).</li>
-                <li><strong>핵심어 3–5개 고정 표출</strong>: 필기 포인트 상시 노출.</li>
-                <li><strong>암기·학습전략 교수</strong>: 앞글자·연상·간격반복 등 <strong>방법 자체</strong> 지도.</li>
-                <li><strong>시간·환경 구조화</strong>: 타이머·시각 타임라인·자리 조정(자극 ↓).</li>
-                <li><strong>평가 합리화</strong>: 문항 수 소폭 축소, <strong>과정 점수화</strong>, 보기 단순화, 일부 <strong>구술 대체</strong>.</li>
-                <li><strong>오류 분석 루틴</strong>: (읽기/절차/계산/용어) 유형화→개별 처방.</li>
-                <li><strong>사회기술 미니수업</strong>: 스킬스트리밍(경청·거절·요청·칭찬·용모).</li>
-                <li><strong>성공경험 설계</strong>: <strong>가장 쉬운 단계부터</strong> 확실한 정답 경험 제공.</li>
-                <li><strong>감정 어휘 지도(정서 명명 훈련)</strong></li>
-            </ol>
-            <div class="highlight-box">
-                <h3>감정 어휘 지도 상세</h3>
-                <ul>
-                    <li><strong>목표</strong>: “모름/막말/과격어” → “정확한 감정 단어 + 이유 + 요청”</li>
-                    <li><strong>도구</strong>: 감정 온도계(1–10), <strong>감정 카드·어휘 은행</strong>(예: 답답함·초조함·서운함·당혹감·무력감…),<br>
-                    <strong>문장틀</strong>: “지금 나는 **[감정]**이고, **[이유]** 때문이야. 그래서 **[요청]**이 있어.”</li>
-                    <li><strong>1분 루틴(S-N-A)</strong>: <strong>Stop(멈춤) → Name(감정 명명) → Ask(요청/선택 제시)</strong></li>
-                    <li><strong>과격어 대체 예</strong>: “죽겠다/미치겠다” → “<strong>불안·초조가 크다</strong>”, “짜증나 뒤지겠어” → “<strong>화가 많이 나고 답답해</strong>”</li>
-                    <li><strong>강화</strong>: 생활기록/상담노트에 <strong>명명 시도 횟수</strong>·<strong>대체표현 성공</strong> 기록→구체 칭찬</li>
-                </ul>
-            </div>
-            <div class="highlight-box">
-                <h3>즉시 실행 10가지 (수업 루틴)</h3>
-                <p>(1) 오늘 배울 3가지 (2) 핵심어 3–5 고정 (3) 지시 3단계 이내 (4) 5분 전 예고 (5) 그림/표 우선 (6) 쉬운 과제 먼저 (7) 영상 자료 활용 (8) 앞자리·자극 최소 (9) 오류패턴별 피드백 (10) <strong>S-N-A 감정 루틴 1분</strong></p>
-            </div>
-        </section>
-
-        <section id="counseling">
-            <h2>7) 부모 상담 (현장 스크립트)</h2>
-            <ol class="script-list">
-                <li><strong>공감</strong>: “그동안 정말 애쓰셨어요.”</li>
-                <li><strong>데이터</strong>: 학교의 <strong>시도 3가지+결과</strong>(간단 표) 공유</li>
-                <li><strong>공동 문제해결</strong>: “남은 과제는 ○○입니다. 함께 방법을 정해요.”</li>
-                <li><strong>가정 과제</strong>: <strong>초2–4 문해·수연산</strong> 15분/일(받아내림·요약·절차 재훈련)</li>
-                <li><strong>재점검</strong>: 2주 후 결과 공유·조정</li>
-            </ol>
-             <p style="margin-top: 2rem;">※ 정보공유 범위(담임/교과/상담)는 <strong>보호자 선택</strong> 존중</p>
-        </section>
-
-        <section id="assessment">
-            <h2>8) 평가·지원 설계</h2>
-            <h3>평가 조정</h3>
-            <p>문항수 70% 안팎, 시간 1.5배, 서술은 단서 제공·구조화, 필요 시 <strong>구술/대체</strong> 병행</p>
-            <h3>오류 대응 매트릭스</h3>
-            <ul>
-                <li>문제이해(어휘) → 쉬운 말 재진술/핵심어 표시</li>
-                <li>절차누락(작업기억) → 단계 체크리스트</li>
-                <li>계산실수(처리속도) → 시간 여유/검산 루틴</li>
-                <li>개념혼동(추상화) → 구체 예시 반복·대조표</li>
-            </ul>
-            <h3>학교 내 연계</h3>
-            <p>담임–교과–상담 <strong>주간 5분 브리핑</strong>, 기초학력 프로그램·전문상담 연계</p>
-        </section>
-
-        <section id="checklist">
-            <h2>9) 선별·조기 발견 체크리스트 (간이)</h2>
-            <ul class="checklist">
-                <li>중3인데 <strong>초2–4 수준</strong> 과제 적합</li>
-                <li>복잡 지시 <strong>시작/유지 어려움</strong></li>
-                <li><strong>서술/추론형</strong>만 현저히 낮음</li>
-                <li>필기 <strong>파편적</strong>, 핵심 포인트 누락</li>
-                <li>과제 <strong>시작 지연/회피</strong></li>
-                <li>또래 원하지만 <strong>유지 기술 부족</strong></li>
-                <li>“모르겠어요” 반복·감정 반응 전이</li>
-                <li><strong>수면 문제</strong>(과다/부족)</li>
-                <li>보호자의 <strong>무기력/혼란</strong> 호소</li>
-            </ul>
-            <p style="margin-top: 2rem;">→ <strong>3개 이상</strong>이면 심화 관찰·전문 평가 의뢰 고려</p>
-        </section>
-
-        <section id="final-principle">
-            <h2>10) 한 줄 원칙</h2>
-            <blockquote>
-                <strong>가장 큰 향상 변인 = 교사 효능감</strong><br>
-                <strong>신념(자란다) + 전략(구조화·명명·단계화)</strong> 이 실제 성취·정서 회복을 이끈다.
-            </blockquote>
-        </section>
-
-    </main>
+        
+        <!-- 푸터 -->
+        <footer class="footer">
+            <div class="footer-emoji">🌏 📖 ✨</div>
+            <p>역사를 알면 미래가 보인다!</p>
+            <p style="margin-top: 5px; font-size: 0.8rem;">© 2026 하늘쌤의 역사교실</p>
+        </footer>
+    </div>
+    
+    <!-- 여행 스탬프 -->
+    <div class="stamp">
+        <div class="stamp-icon">🛫</div>
+        <div>HISTORY</div>
+        <div>TOUR</div>
+    </div>
     
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('main section');
-            const navLinks = document.querySelectorAll('nav .nav-links li a');
-
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.3
-            };
-
-            const sectionObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        
-                        // Update nav link
-                        const id = entry.target.getAttribute('id');
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href') === `#${id}`) {
-                                link.classList.add('active');
-                            }
-                        });
-                    }
-                });
-            }, observerOptions);
-
-            sections.forEach(section => {
-                sectionObserver.observe(section);
+        // 카드에 마우스 효과 추가
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+        
+        // 스크롤 시 배경 패럴랙스 효과
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            document.querySelectorAll('.floating-emoji').forEach((emoji, i) => {
+                const speed = 0.1 + (i * 0.05);
+                emoji.style.transform = `translateY(${scrolled * speed}px)`;
             });
         });
     </script>
-
 </body>
 </html>
