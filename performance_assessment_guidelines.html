@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3·1운동 → 대한민국 임시정부 수립 수행평가</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Gaegu:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.16);
+            --korean-red: #c8102e;
+            --korean-blue: #003478;
+            --traditional-gold: #d4af37;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e8ba3 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: backgroundMove 60s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        @keyframes backgroundMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 30px); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-section {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff 0%, #e0e7ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        /* 시작 전 체크 배너 */
+        .start-banner {
+            background: linear-gradient(135deg, rgba(17, 153, 142, 0.3), rgba(56, 239, 125, 0.2));
+            border: 2px solid rgba(56, 239, 125, 0.4);
+            border-radius: 20px;
+            padding: 28px 32px;
+            margin-bottom: 30px;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(56, 239, 125, 0.2); }
+            50% { box-shadow: 0 0 35px rgba(56, 239, 125, 0.35); }
+        }
+
+        .start-banner h2 {
+            color: #38ef7d;
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .start-checklist {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .start-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+        }
+
+        .start-item .check-circle {
+            width: 24px;
+            height: 24px;
+            border: 2px solid rgba(56, 239, 125, 0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #38ef7d;
+            flex-shrink: 0;
+        }
+        
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.25);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        /* 프로그레스 섹션 */
+        .progress-section {
+            margin-bottom: 30px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .progress-title {
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .progress-time {
+            color: var(--traditional-gold);
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 12px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--success-gradient);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+        }
+
+        .progress-step {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .progress-step.active {
+            color: #38ef7d;
+            font-weight: 600;
+        }
+        
+        /* 단계 카드 */
+        .step-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .step-info {
+            flex: 1;
+        }
+
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .step-time {
+            font-size: 0.85rem;
+            color: var(--traditional-gold);
+            font-weight: 500;
+        }
+
+        .step-content {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+        }
+
+        /* 이렇게 하면 돼요 박스 */
+        .how-to-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.15));
+            border: 2px dashed rgba(102, 126, 234, 0.5);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+
+        .how-to-title {
+            color: #a5b4fc;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .how-to-content {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+        }
+
+        /* 예시 토글 */
+        .example-toggle {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            margin: 16px 0;
+            overflow: hidden;
+        }
+
+        .example-toggle-btn {
+            width: 100%;
+            padding: 16px 20px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: 'Noto Sans KR', sans-serif;
+            transition: background 0.2s;
+        }
+
+        .example-toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .example-toggle-btn .arrow {
+            transition: transform 0.3s;
+        }
+
+        .example-toggle-btn.open .arrow {
+            transform: rotate(180deg);
+        }
+
+        .example-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .example-content.open {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        .example-text {
+            background: rgba(0, 0, 0, 0.2);
+            border-left: 4px solid var(--traditional-gold);
+            padding: 16px 20px;
+            border-radius: 0 12px 12px 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            font-family: 'Gaegu', cursive;
+            font-size: 1.1rem;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        /* 페르소나 그리드 */
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        
+        .persona-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .persona-card:hover {
+            transform: scale(1.03);
+            border-color: var(--traditional-gold);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+        }
+        
+        .persona-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+        }
+        
+        .persona-hint {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        /* 자료 탭 */
+        .tab-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        .tab-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .tab-button.active {
+            background: var(--primary-gradient);
+            border-color: transparent;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .source-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .source-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .source-card:hover {
+            transform: translateY(-4px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.12));
+        }
+        
+        .source-label {
+            display: inline-block;
+            background: var(--primary-gradient);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 14px;
+        }
+        
+        .source-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .source-content {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+            font-size: 0.92rem;
+        }
+        
+        .advanced-label {
+            background: var(--secondary-gradient);
+        }
+
+        /* 루브릭 테이블 */
+        .rubric-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            overflow: hidden;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .rubric-table th {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        
+        .rubric-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+        
+        .rubric-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .rubric-table tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .score-badge {
+            display: inline-block;
+            background: var(--traditional-gold);
+            color: #1a1a1a;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        /* 체크리스트 */
+        .checklist-section {
+            background: linear-gradient(135deg, rgba(17, 153, 142, 0.15), rgba(56, 239, 125, 0.1));
+            border: 2px solid rgba(56, 239, 125, 0.3);
+            border-radius: 20px;
+            padding: 28px;
+            margin: 24px 0;
+        }
+
+        .checklist-title {
+            color: #38ef7d;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid rgba(56, 239, 125, 0.5);
+            border-radius: 6px;
+            cursor: pointer;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            margin-top: 2px;
+        }
+
+        .checkbox:hover {
+            border-color: #38ef7d;
+            background: rgba(56, 239, 125, 0.1);
+        }
+
+        .checkbox.checked {
+            background: var(--success-gradient);
+            border-color: transparent;
+        }
+
+        .checkbox.checked::after {
+            content: '✓';
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* FAQ 섹션 */
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 18px 20px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: 'Noto Sans KR', sans-serif;
+            text-align: left;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-question .q-mark {
+            color: var(--traditional-gold);
+            margin-right: 10px;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+        }
+
+        .faq-answer.open {
+            max-height: 300px;
+            padding: 0 20px 18px 20px;
+        }
+
+        /* 팁 박스 */
+        .tip-box {
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.15), rgba(0, 242, 254, 0.1));
+            border: 2px solid rgba(79, 172, 254, 0.3);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+
+        .tip-title {
+            color: #4facfe;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tip-content {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+        }
+
+        /* 경고 박스 */
+        .warning-box {
+            background: linear-gradient(135deg, rgba(245, 87, 108, 0.15), rgba(240, 147, 251, 0.1));
+            border-left: 4px solid #f5576c;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            color: white;
+        }
+
+        .warning-box strong {
+            color: #f5576c;
+        }
+
+        /* 규칙 박스 */
+        .rules-box {
+            background: linear-gradient(135deg, rgba(200, 16, 46, 0.12), rgba(0, 52, 120, 0.12));
+            border-left: 4px solid var(--traditional-gold);
+            padding: 20px 24px;
+            border-radius: 12px;
+            margin: 20px 0;
+            color: white;
+            line-height: 1.8;
+        }
+
+        .rules-box strong {
+            color: var(--traditional-gold);
+        }
+
+        /* 운영 가이드 */
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .guide-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .guide-card h4 {
+            color: white;
+            font-size: 1.05rem;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .guide-card ul {
+            list-style: none;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+        }
+
+        .guide-card li {
+            padding: 4px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .guide-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--traditional-gold);
+        }
+
+        /* 플로팅 네비게이션 */
+        .floating-nav {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-gradient);
+            color: white;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .floating-nav:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.6);
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.9rem;
+            }
+            
+            .glass-card {
+                padding: 24px;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+            }
+            
+            .step-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <h1 class="hero-title">3·1 운동 → 대한민국 임시정부 수립</h1>
+            <p class="hero-subtitle">수행평가 가이드 · 차근차근 따라하면 완성!</p>
+        </div>
+
+        <!-- 시작 전 체크 배너 -->
+        <div class="start-banner">
+            <h2>🚀 시작하기 전에 확인!</h2>
+            <div class="start-checklist">
+                <div class="start-item">
+                    <span class="check-circle">✓</span>
+                    <span>학교 계정으로 로그인했나요?</span>
+                </div>
+                <div class="start-item">
+                    <span class="check-circle">✓</span>
+                    <span>40분 동안 방해받지 않는 환경인가요?</span>
+                </div>
+                <div class="start-item">
+                    <span class="check-circle">✓</span>
+                    <span>자료를 먼저 읽어봤나요?</span>
+                </div>
+                <div class="start-item">
+                    <span class="check-circle">✓</span>
+                    <span>메모장이나 종이 준비됐나요?</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 시간 진행 바 -->
+        <div class="glass-card">
+            <div class="progress-section">
+                <div class="progress-header">
+                    <span class="progress-title">⏱️ 전체 시간: 40분</span>
+                    <span class="progress-time">권장 시간을 참고하세요!</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+                <div class="progress-steps">
+                    <span class="progress-step active">서약 2분</span>
+                    <span class="progress-step active">페르소나 2분</span>
+                    <span class="progress-step active">사실·인과 8분</span>
+                    <span class="progress-step active">자료활용 8분</span>
+                    <span class="progress-step active">공감·규칙 8분</span>
+                    <span class="progress-step active">최종글 12분</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 단계별 가이드 -->
+        <div class="glass-card">
+            <div class="section-title">
+                <div class="section-icon">📝</div>
+                단계별 가이드
+            </div>
+
+            <!-- 0단계: 서약 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">0</div>
+                    <div class="step-info">
+                        <div class="step-title">서약 작성</div>
+                        <div class="step-time">⏱️ 약 2분</div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p>AI나 번역기를 사용하지 않고 <strong>스스로 작성</strong>하겠다는 서약입니다.</p>
+                    
+                    <div class="how-to-box">
+                        <div class="how-to-title">✨ 이렇게 하면 돼요!</div>
+                        <div class="how-to-content">
+                            구글폼에서 서약 문항을 읽고 <strong>"예, 동의합니다"</strong>를 선택하면 끝!<br>
+                            서약에 동의해야 다음 단계로 넘어갈 수 있어요.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1단계: 페르소나 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <div class="step-info">
+                        <div class="step-title">페르소나 선택 (내 역할 고르기)</div>
+                        <div class="step-time">⏱️ 약 2분</div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p>1919년 3·1 운동 당시 어떤 인물의 입장에서 글을 쓸지 정해요.</p>
+                    
+                    <div class="persona-grid">
+                        <div class="persona-card">
+                            <div class="persona-title">👨‍🎓 만세 시위에 참여한 학생</div>
+                            <div class="persona-hint">또래와 함께 거리로 나왔던 이유, 용기와 두려움</div>
+                        </div>
+                        <div class="persona-card">
+                            <div class="persona-title">🏪 태극기·선언서를 전달한 상인</div>
+                            <div class="persona-hint">들키면 체포될 위험, 소식을 옮기는 긴장감</div>
+                        </div>
+                        <div class="persona-card">
+                            <div class="persona-title">🙏 독립선언을 지지한 종교인</div>
+                            <div class="persona-hint">사람들을 설득하고, 폭력 없이 뜻을 지키려는 고민</div>
+                        </div>
+                        <div class="persona-card">
+                            <div class="persona-title">🌏 해외에서 소식을 들은 한인</div>
+                            <div class="persona-hint">멀리서 느낀 분노와 미안함, 대표 정부의 절실함</div>
+                        </div>
+                        <div class="persona-card">
+                            <div class="persona-title">👨‍👩‍👧 탄압을 목격한 가족</div>
+                            <div class="persona-hint">가족 안전 걱정과 참여 사이의 갈등</div>
+                        </div>
+                    </div>
+
+                    <div class="how-to-box">
+                        <div class="how-to-title">✨ 이렇게 하면 돼요!</div>
+                        <div class="how-to-content">
+                            • <strong>내가 감정이입하기 쉬운</strong> 역할을 골라요<br>
+                            • "내가 만약 그 시대에 살았다면?" 상상해 보세요<br>
+                            • 선택한 페르소나는 <strong>최종 글(6단계)</strong>에서 꼭 써야 해요!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2단계: 사실 3문장 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <div class="step-info">
+                        <div class="step-title">사실 3문장 쓰기</div>
+                        <div class="step-time">⏱️ 약 4분</div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p>3·1 운동과 임시정부 수립에 대해 <strong>알고 있는 사실</strong>을 3문장으로 써요.</p>
+                    
+                    <div class="how-to-box">
+                        <div class="how-to-title">✨ 이렇게 하면 돼요!</div>
+                        <div class="how-to-content">
+                            <strong>쓸 내용 힌트:</strong><br>
+                            • 언제, 어디서 일어났나요? (시간/장소)<br>
+                            • 누가 참여했나요? (참여 계층)<br>
+                            • 결과는 무엇이었나요? (임시정부 수립)
+                        </div>
+                    </div>
+
+                    <div class="example-toggle">
+                        <button class="example-toggle-btn" onclick="toggleExample(this)">
+                            <span>📌 예시 답안 보기</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="example-content">
+                            <div class="example-text">
+                                ① 1919년 3월 1일, 서울에서 독립 만세 시위가 시작되었다.<br>
+                                ② 학생, 상인, 농민 등 다양한 사람들이 전국에서 참여했다.<br>
+                                ③ 이 운동을 계기로 상하이에서 대한민국 임시정부가 만들어졌다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3단계: 인과 설명 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <div class="step-info">
+                        <div class="step-title">인과 설명 (왜→어떻게→그래서)</div>
+                        <div class="step-time">⏱️ 약 4분</div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p><strong>"왜 3·1 운동이 일어났고, 왜 임시정부가 필요했는지"</strong> 원인-과정-결과를 연결해서 설명해요.</p>
+                    
+                    <div class="how-to-box">
+                        <div class="how-to-title">✨ 이렇게 하면 돼요!</div>
+                        <div class="how-to-content">
+                            <strong>3단계 연결 공식:</strong><br><br>
+                            <strong style="color: #f5576c;">왜?</strong> → 일제의 억압이 심해지고, 민족자결주의가 퍼지면서...<br>
+                            <strong style="color: #4facfe;">어떻게?</strong> → 전국에서 만세 시위가 일어났고...<br>
+                            <strong style="color: #38ef7d;">그래서?</strong> → 독립운동을 이끌 대표 정부가 필요해졌다!
+                        </div>
+                    </div>
+
+                    <div class="example-toggle">
+                        <button class="example-toggle-btn" onclick="toggleExample(this)">
+                            <span>📌 예시 답안 보기</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="example-content">
+                            <div class="example-text">
+                                일제의 무단통치로 자유를 빼앗긴 상황에서, 윌슨의 민족자결주의가 희망이 되었다. 이에 독립선언서가 발표되고 전국에서 만세 시위가 퍼졌다. 하지만 일제의 탄압이 심해지자, 독립운동을 조직적으로 이끌 '정부'가 필요하다는 목소리가 커졌고, 결국 상하이에서 대한민국 임시정부가 수립되었다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4단계: 자료 선택 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <div class="step-info">
+                        <div class="step-title">자료 선택 + 통합 설명</div>
+                        <div class="step-time">⏱️ 약 8분</div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p>제시된 자료 중에서 <strong>기본 1개 + 심화 1개</strong>를 골라 내 주장의 근거로 활용해요.</p>
+
+                    <div class="rules-box">
+                        <strong>📌 자료 선택 규칙 (중요!)</strong><br>
+                        • 기본 자료(A~D)에서 <strong>1개</strong> 선택<br>
+                        • 심화 자료(E 또는 F)에서 <strong>1개</strong> 선택 (둘 중 하나만!)
+                    </div>
+                    
+                    <div class="how-to-box">
+                        <div class="how-to-title">✨ 이렇게 하면 돼요!</div>
+                        <div class="how-to-content">
+                            <strong>자료 활용 공식:</strong><br><br>
+                            "자료 __에 따르면 ____________이다."<br>
+                            + "이를 통해 ____________을/를 알 수 있다."<br><br>
+                            👉 단순히 자료 내용을 베끼지 말고, <strong>"그래서 왜 정부가 필요했는지"</strong>로 연결!
+                        </div>
+                    </div>
+
+                    <div class="example-toggle">
+                        <button class="example-toggle-btn" onclick="toggleExample(this)">
+                            <span>📌 예시 답안 보기</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="example-content">
+                            <div class="example-text">
+                                <strong>[기본 자료 D 활용]</strong><br>
+                                자료 D에 따르면 3·1 운동 이후 "독립을 이끌 대표 기구가 필요하다"는 목소리가 커졌다. 이를 통해 흩어진 독립운동을 하나로 모을 조직의 필요성을 알 수 있다.<br><br>
+                                <strong>[심화 자료 E 활용]</strong><br>
+                                자료 E에 따르면 해외 한인 사회에서도 모금과 조직 활동이 활발해졌다. 해외와 국내 독립운동을 연결하려면 '대표 정부'가 꼭 필요했음을 알 수 있다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5단계: 역사적 공감 + 소통 규칙 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">5</div>
+                    <div class="step-info">
+                        <div class="step-title">역사적 공감 + 임시정부 소통 규칙 2개</div>
+                        <div class="step-time">⏱️ 약 8분</div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p><strong>5-1. 역사적 공감:</strong> 선택한 페르소나가 느꼈을 3·1운동과 임시정부에 대한 감정과 고민을 표현해요.<br>
+                    <strong>5-2. 소통 규칙:</strong> 만약 내가 임시정부의 일원이라면, 어떤 규칙을 만들겠는지 2개 제안해요.</p>
+                    
+                    <div class="how-to-box">
+                        <div class="how-to-title">✨ 5-1. 역사적 공감 이렇게!</div>
+                        <div class="how-to-content">
+                            <strong>공식:</strong> "나는 3·1운동(또는 임시정부)에 대해 ~한 마음이었다. 하지만 ~도 이해한다."<br><br>
+                            👉 <strong>3·1운동과 임시정부에 대한 내 감정</strong>도 쓰고, <strong>다른 입장</strong>(예: 참여를 망설인 사람, 다른 노선)도 인정해 주세요!
+                        </div>
+                    </div>
+
+                    <div class="example-toggle">
+                        <button class="example-toggle-btn" onclick="toggleExample(this)">
+                            <span>📌 5-1 예시 보기</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="example-content">
+                            <div class="example-text">
+                                나는 만세를 외치면서 두려웠지만, 나라를 되찾고 싶다는 희망이 더 컸다. 하지만 가족 걱정에 참여하지 못한 사람들의 마음도 충분히 이해한다. 그들도 마음속으로는 독립을 바랐을 것이다.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="how-to-box" style="margin-top: 20px;">
+                        <div class="how-to-title">✨ 5-2. 소통 규칙 이렇게!</div>
+                        <div class="how-to-content">
+                            <strong>생각할 점:</strong> 임시정부 안에는 외교파, 무장투쟁파 등 의견이 달랐어요.<br>
+                            👉 "서로 다른 의견을 어떻게 조율할까?" 생각하며 규칙을 만들어요!
+                        </div>
+                    </div>
+
+                    <div class="example-toggle">
+                        <button class="example-toggle-btn" onclick="toggleExample(this)">
+                            <span>📌 5-2 예시 보기</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="example-content">
+                            <div class="example-text">
+                                <strong>규칙 1:</strong> 중요한 결정은 반드시 회의를 통해 다수결로 정한다. 외교와 무장투쟁 중 어떤 방법을 쓸지 모두의 의견을 듣고 결정해야 한다.<br><br>
+                                <strong>규칙 2:</strong> 국내와 해외 독립운동 상황을 매달 공유하는 소식지를 만든다. 서로 어떤 활동을 하는지 알아야 협력할 수 있기 때문이다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6단계: 최종 논술 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">6</div>
+                    <div class="step-info">
+                        <div class="step-title">최종 논술 (500자 이상)</div>
+                        <div class="step-time">⏱️ 약 12분</div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p>지금까지 작성한 내용을 <strong>하나의 완성된 글</strong>로 엮어요!</p>
+
+                    <div class="warning-box">
+                        <strong>⚠️ 필수 포함 요소 (이거 빠지면 감점!)</strong><br>
+                        ✅ 페르소나 관점 1문단<br>
+                        ✅ 인과 구조 (왜→어떻게→그래서)<br>
+                        ✅ 선택한 자료 활용 (기본 1개 + 심화 1개)<br>
+                        ✅ 역사적 공감 + 다른 입장 인정<br>
+                        ✅ 협력 소통 규칙 언급<br>
+                        ✅ 최소 500자 이상
+                    </div>
+                    
+                    <div class="how-to-box">
+                        <div class="how-to-title">✨ 글 구성 순서 (추천)</div>
+                        <div class="how-to-content">
+                            <strong>1문단:</strong> 도입 - 페르소나 소개 + 3·1 운동 배경<br>
+                            <strong>2문단:</strong> 전개 - 인과 설명 + 자료 활용<br>
+                            <strong>3문단:</strong> 심화 - 역사적 공감 + 다른 입장 인정<br>
+                            <strong>4문단:</strong> 마무리 - 임시정부의 의의 + 소통 규칙 제안
+                        </div>
+                    </div>
+
+                    <div class="example-toggle">
+                        <button class="example-toggle-btn" onclick="toggleExample(this)">
+                            <span>📌 전체 글 예시 보기</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="example-content">
+                            <div class="example-text" style="font-size: 1rem;">
+                                나는 1919년 3월, 서울 거리에서 만세를 외친 학생이다. 일제의 무단통치로 말 한마디 자유롭게 할 수 없었던 시절, 윌슨의 민족자결주의 소식은 우리에게 희망이 되었다.<br><br>
+                                자료 D에서 알 수 있듯이, 3·1 운동 이후 "독립을 이끌 대표 기구가 필요하다"는 목소리가 커졌다. 또한 자료 E에 따르면 해외 한인들도 모금과 조직 활동을 활발히 했는데, 이렇게 흩어진 움직임을 하나로 모으려면 정부가 꼭 필요했다.<br><br>
+                                나는 만세를 외칠 때 두려웠지만, 독립에 대한 희망이 더 컸다. 물론 가족 걱정에 참여하지 못한 사람들도 있었는데, 그 마음도 충분히 이해한다.<br><br>
+                                만약 내가 임시정부 일원이라면, 첫째로 중요한 결정은 회의를 통해 정하는 규칙을, 둘째로 국내외 소식을 공유하는 소식지 발행을 제안하고 싶다. 서로 다른 의견을 가진 사람들이 함께 독립을 이루려면 소통이 가장 중요하기 때문이다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 자료 섹션 -->
+        <div class="glass-card">
+            <div class="section-title">
+                <div class="section-icon">📚</div>
+                제시 자료
+            </div>
+
+            <div class="tab-container">
+                <button class="tab-button active" onclick="switchTab('basic')">기본 자료 (A~D)</button>
+                <button class="tab-button" onclick="switchTab('advanced')">심화 자료 (E~F)</button>
+            </div>
+
+            <div id="basic-tab" class="tab-content active">
+                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">👇 여기서 <strong style="color: white;">1개</strong> 선택</p>
+                <div class="source-grid">
+                    <div class="source-card">
+                        <span class="source-label">자료 A</span>
+                        <div class="source-title">독립 선언의 뜻</div>
+                        <div class="source-content">
+                            "우리는 조선이 독립한 나라임과 조선 사람이 자주적인 민족임을 밝힌다. 이 뜻을 널리 알려 정의와 평화를 이루고자 한다."
+                        </div>
+                    </div>
+                    <div class="source-card">
+                        <span class="source-label">자료 B</span>
+                        <div class="source-title">만세 시위 장면</div>
+                        <div class="source-content">
+                            사진 속에는 학생(교복), 두루마기 차림의 어른, 작업복 차림의 사람이 함께 보인다. 사람들은 태극기를 들고 거리에서 만세를 외치고 있다.
+                        </div>
+                    </div>
+                    <div class="source-card">
+                        <span class="source-label">자료 C</span>
+                        <div class="source-title">탄압과 희생</div>
+                        <div class="source-content">
+                            만세 시위는 여러 지역으로 퍼졌지만 일본 경찰과 군대의 강한 탄압으로 많은 사람이 잡히거나 다쳤다. 마을 단위의 폭력과 희생도 생겼다.
+                        </div>
+                    </div>
+                    <div class="source-card">
+                        <span class="source-label">자료 D</span>
+                        <div class="source-title">대표 기구의 필요</div>
+                        <div class="source-content">
+                            3·1 운동 이후 "독립을 이끌 대표 기구(정부)가 필요하다"는 목소리가 커졌다. 이에 따라 해외를 중심으로 임시 정부가 세워지고 독립운동을 조직하려 했다.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="advanced-tab" class="tab-content">
+                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">👇 여기서 <strong style="color: white;">1개만</strong> 선택 (E 또는 F 중 택1)</p>
+                <div class="source-grid">
+                    <div class="source-card">
+                        <span class="source-label advanced-label">자료 E</span>
+                        <div class="source-title">해외 한인의 반응</div>
+                        <div class="source-content">
+                            3·1 운동 소식은 해외 한인 사회에도 전해져 모금, 홍보, 조직 활동이 활발해졌다. 해외에서는 "우리의 뜻을 대표할 정부가 있어야 한다"는 의견이 더 강해졌다.
+                        </div>
+                    </div>
+                    <div class="source-card">
+                        <span class="source-label advanced-label">자료 F</span>
+                        <div class="source-title">노선 차이: 외교 vs 무장</div>
+                        <div class="source-content">
+                            독립운동가들 사이에서는 "국제사회에 알리는 외교 활동"을 강조하는 의견과 "무장 투쟁 준비"를 강조하는 의견이 함께 존재했다. 방법의 차이는 갈등을 낳기도 했다.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="tip-title">💡 심화자료 쉽게 쓰는 법</div>
+                    <div class="tip-content">
+                        <strong>자료 E:</strong> "해외에서도 모금/조직이 늘어 <strong>대표 정부가 필요</strong>해졌다"만 써도 OK!<br><br>
+                        <strong>자료 F:</strong> "방법이 나뉘어 갈등이 생길 수 있어 <strong>조정할 정부가 필요</strong>했다"만 써도 OK!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 제출 전 체크리스트 -->
+        <div class="glass-card">
+            <div class="section-title">
+                <div class="section-icon">✅</div>
+                제출 전 체크리스트
+            </div>
+
+            <div class="checklist-section">
+                <div class="checklist-title">📋 이것만 확인하고 제출하세요!</div>
+                
+                <div class="checklist-item">
+                    <div class="checkbox" onclick="toggleCheck(this)"></div>
+                    <span>페르소나(역할)가 최종 글에 포함되어 있나요?</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox" onclick="toggleCheck(this)"></div>
+                    <span>"왜→어떻게→그래서" 인과 구조가 있나요?</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox" onclick="toggleCheck(this)"></div>
+                    <span>기본 자료 1개를 근거로 활용했나요?</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox" onclick="toggleCheck(this)"></div>
+                    <span>심화 자료 (E 또는 F) 1개를 활용했나요?</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox" onclick="toggleCheck(this)"></div>
+                    <span>역사적 공감 + 다른 입장 인정이 있나요?</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox" onclick="toggleCheck(this)"></div>
+                    <span>임시정부 소통 규칙 2개를 썼나요?</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox" onclick="toggleCheck(this)"></div>
+                    <span>최종 글이 500자 이상인가요?</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox" onclick="toggleCheck(this)"></div>
+                    <span>맞춤법과 문장 연결을 확인했나요?</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 평가 기준 -->
+        <div class="glass-card">
+            <div class="section-title">
+                <div class="section-icon">⭐</div>
+                평가 기준
+            </div>
+
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">평가 영역</th>
+                        <th style="width: 12%;">배점</th>
+                        <th>이렇게 하면 높은 점수!</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>① 페르소나 적용</strong></td>
+                        <td><span class="score-badge">2점</span></td>
+                        <td>선택한 인물의 처지·감정이 구체적이고, 답안 전반에서 관점이 일관돼요</td>
+                    </tr>
+                    <tr>
+                        <td><strong>② 기초 사실 정확성</strong></td>
+                        <td><span class="score-badge">2점</span></td>
+                        <td>3·1 운동의 특징, 일제 대응, 임시정부 필요성을 정확하게 서술해요</td>
+                    </tr>
+                    <tr>
+                        <td><strong>③ 인과 설명</strong></td>
+                        <td><span class="score-badge">2점</span></td>
+                        <td>왜→어떻게→그래서 연결이 논리적이고, '정부 필요성'이 설득력 있어요</td>
+                    </tr>
+                    <tr>
+                        <td><strong>④ 자료 통합</strong></td>
+                        <td><span class="score-badge">4점</span></td>
+                        <td>기본+심화 자료를 자기 말로 해석하고, 두 자료가 각각 다른 역할로 연결돼요</td>
+                    </tr>
+                    <tr>
+                        <td><strong>⑤ 공감·소통</strong></td>
+                        <td><span class="score-badge">2점</span></td>
+                        <td>역사적 공감 + 다른 입장 인정, 소통 규칙이 당시 상황과 연결돼요</td>
+                    </tr>
+                    <tr>
+                        <td><strong>⑥ 최종 논술</strong></td>
+                        <td><span class="score-badge">8점</span></td>
+                        <td>모든 요소가 자연스럽게 연결되고, 500자 이상의 완성된 글이에요</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="tip-box" style="margin-top: 24px;">
+                <div class="tip-title">💯 총점 안내</div>
+                <div class="tip-content">
+                    <strong>총 20점</strong> (과정 12점: 2+2+2+4+2 / 논술 8점)
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ 섹션 -->
+        <div class="glass-card">
+            <div class="section-title">
+                <div class="section-icon">❓</div>
+                자주 묻는 질문
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span><span class="q-mark">Q.</span> 자료를 그대로 베껴도 되나요?</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="faq-answer">
+                    아니요! 자료는 <strong>근거로 활용</strong>하는 거예요. "자료 __에 따르면 ~이다"라고 쓴 후, <strong>"이를 통해 ~를 알 수 있다"</strong>로 해석을 덧붙여야 해요.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span><span class="q-mark">Q.</span> 심화 자료 E랑 F 둘 다 쓰면 더 좋은 점수 받나요?</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="faq-answer">
+                    아니요! 심화 자료는 <strong>E 또는 F 중 1개만</strong> 선택하는 거예요. 둘 다 쓸 필요 없어요. 1개를 깊이 있게 활용하는 게 더 좋아요.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span><span class="q-mark">Q.</span> "역사적 공감"이 뭔지 모르겠어요.</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="faq-answer">
+                    선택한 페르소나(역할)의 <strong>감정과 생각</strong>을 표현하는 거예요. "나는 ~해서 ~한 마음이었다"처럼 쓰면 돼요. 그리고 "하지만 ~한 사람들의 마음도 이해한다"로 다른 입장도 인정해 주세요!
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span><span class="q-mark">Q.</span> 글자 수가 500자가 안 돼요!</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="faq-answer">
+                    각 단계별 내용을 조금씩 더 구체적으로 써보세요. 예를 들어 인과 설명을 더 자세히 하거나, 역사적 공감 부분에서 감정을 더 풍부하게 표현해 보세요. 단, 같은 말 반복은 피해 주세요!
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span><span class="q-mark">Q.</span> 제출 후 수정할 수 있나요?</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <strong>제출 후에는 수정할 수 없어요!</strong> 그래서 제출 전에 체크리스트를 꼭 확인하고, 내용을 한 번 더 읽어본 후 제출하세요.
+                </div>
+            </div>
+        </div>
+
+        <!-- 운영 가이드 (교사용) -->
+        <div class="glass-card">
+            <div class="section-title">
+                <div class="section-icon">⚙️</div>
+                운영 안내
+            </div>
+
+            <div class="guide-grid">
+                <div class="guide-card">
+                    <h4>⏱️ 시간 배분</h4>
+                    <ul>
+                        <li>전체 40분</li>
+                        <li>안내 5분 → 작성 30분 → 제출 확인 5분</li>
+                    </ul>
+                </div>
+                <div class="guide-card">
+                    <h4>🔒 구글폼 설정</h4>
+                    <ul>
+                        <li>학교 계정만 응답 가능</li>
+                        <li>1회 응답 제한</li>
+                        <li>제출 후 수정 불가</li>
+                        <li>최종 논술 최소 500자</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ 학생 유의사항</strong><br>
+                • AI/번역기/대필 없이 스스로 작성<br>
+                • 친구 답안 보거나 공유 금지<br>
+                • 위반 시 재작성/0점 처리
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-nav" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑
+    </div>
+
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabName + '-tab').classList.add('active');
+        }
+
+        function toggleExample(btn) {
+            btn.classList.toggle('open');
+            const content = btn.nextElementSibling;
+            content.classList.toggle('open');
+        }
+
+        function toggleFaq(btn) {
+            const answer = btn.nextElementSibling;
+            const isOpen = answer.classList.contains('open');
+            
+            // 다른 FAQ 닫기
+            document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+            document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('open'));
+            
+            if (!isOpen) {
+                answer.classList.add('open');
+                btn.classList.add('open');
+            }
+        }
+
+        function toggleCheck(checkbox) {
+            checkbox.classList.toggle('checked');
+        }
+
+        // 스크롤 애니메이션
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease-out';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

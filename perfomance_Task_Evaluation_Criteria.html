@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3·1운동 → 임시정부 수립 수행평가 채점기준표 (완성본)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @media print {
+            body { padding: 10px; font-size: 10.5px; }
+            .container { box-shadow: none; padding: 20px; }
+            .no-print { display: none; }
+            .page-break { page-break-before: always; }
+            .section { margin-bottom: 15px; }
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', '맑은 고딕', sans-serif;
+            background: #f5f5f5;
+            padding: 40px 20px;
+            line-height: 1.6;
+            color: #333;
+            font-size: 13px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px 45px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #1a237e;
+        }
+        
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a237e;
+            margin-bottom: 5px;
+        }
+        
+        .header .subtitle {
+            font-size: 0.95rem;
+            color: #555;
+        }
+        
+        .header .version {
+            display: inline-block;
+            background: #1a237e;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-top: 8px;
+        }
+        
+        .meta-box {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 12px;
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+        
+        .meta-box div {
+            text-align: center;
+        }
+        
+        .meta-box strong {
+            color: #1a237e;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 8px 12px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        
+        .section-title.blue {
+            background: #e3f2fd;
+            border-left: 4px solid #1976D2;
+            color: #1565c0;
+        }
+        
+        .section-title.orange {
+            background: #fff3e0;
+            border-left: 4px solid #e65100;
+            color: #e65100;
+        }
+        
+        .section-title.red {
+            background: #ffebee;
+            border-left: 4px solid #c62828;
+            color: #c62828;
+        }
+        
+        .section-title.green {
+            background: #e8f5e9;
+            border-left: 4px solid #2e7d32;
+            color: #2e7d32;
+        }
+        
+        .section-title.purple {
+            background: #f3e5f5;
+            border-left: 4px solid #7b1fa2;
+            color: #7b1fa2;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+            margin-bottom: 10px;
+        }
+        
+        th, td {
+            border: 1px solid #bdbdbd;
+            padding: 8px 10px;
+            vertical-align: top;
+        }
+        
+        th {
+            background: #f5f5f5;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .score-cell {
+            text-align: center;
+            font-weight: 700;
+            width: 50px;
+        }
+        
+        .highlight-box {
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 0.85rem;
+        }
+        
+        .highlight-box.blue {
+            background: #e3f2fd;
+            border: 1px solid #90caf9;
+        }
+        
+        .highlight-box.orange {
+            background: #fff3e0;
+            border: 1px solid #ffcc80;
+        }
+        
+        .highlight-box.red {
+            background: #ffebee;
+            border: 1px solid #ef9a9a;
+        }
+        
+        .highlight-box.green {
+            background: #e8f5e9;
+            border: 1px solid #a5d6a7;
+        }
+        
+        .highlight-box.purple {
+            background: #f3e5f5;
+            border: 1px solid #ce93d8;
+        }
+        
+        .highlight-box.yellow {
+            background: #fffde7;
+            border: 1px solid #fff59d;
+        }
+        
+        .highlight-box strong {
+            color: inherit;
+        }
+        
+        .min-req {
+            color: #1565c0;
+            font-size: 0.78rem;
+            margin-top: 5px;
+            padding-top: 5px;
+            border-top: 1px dashed #90caf9;
+        }
+        
+        .penalty-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 10px 0;
+            border-bottom: 1px solid #ffcdd2;
+        }
+        
+        .penalty-item:last-child {
+            border-bottom: none;
+        }
+        
+        .penalty-icon {
+            background: #c62828;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        .penalty-content {
+            flex: 1;
+        }
+        
+        .penalty-content strong {
+            color: #c62828;
+        }
+        
+        .model-answer {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .model-answer h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .model-answer-content {
+            background: white;
+            border-left: 3px solid #4caf50;
+            padding: 12px 15px;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: #333;
+        }
+        
+        .procedure-box {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .procedure-box h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .procedure-box ol {
+            margin-left: 18px;
+        }
+        
+        .procedure-box li {
+            margin-bottom: 5px;
+        }
+        
+        .summary-table th {
+            background: #1a237e;
+            color: white;
+        }
+        
+        .summary-table td {
+            text-align: center;
+        }
+        
+        .footer-note {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+            font-size: 0.78rem;
+            color: #666;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .checklist {
+            list-style: none;
+        }
+        
+        .checklist li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .checklist li::before {
+            content: "☑";
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+        }
+        
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #1a237e;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .print-btn:hover {
+            background: #0d1642;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 -->
+        <div class="header">
+            <h1>3·1 운동 → 대한민국 임시정부 수립</h1>
+            <div class="subtitle">논술형 수행평가 채점기준표</div>
+            <span class="version">완성본 v3.0</span>
+        </div>
+        
+        <!-- 메타 정보 -->
+        <div class="meta-box">
+            <div><strong>과목</strong><br>역사</div>
+            <div><strong>평가 유형</strong><br>서술형·논술형</div>
+            <div><strong>총점</strong><br>20점 (과정 12 + 논술 8)</div>
+            <div><strong>최저점</strong><br>8점 (과정 5 + 논술 3)</div>
+        </div>
+
+        <!-- 제출 요건 -->
+        <div class="highlight-box red">
+            <strong>※ 제출 요건(서약):</strong> AI/번역기/대필 미사용 및 답안 공유 금지 서약 체크 미완료 시 제출 불가 → 재작성 안내
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- 1) 과정 영역 -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div class="section">
+            <div class="section-title blue">1) 과정 영역 (12점, 최저 5점)</div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 18%;">평가 요소</th>
+                        <th style="width: 7%;">배점</th>
+                        <th>채점 기준</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 1. 페르소나 적용 -->
+                    <tr>
+                        <td rowspan="2"><strong>1. 페르소나 적용</strong></td>
+                        <td class="score-cell">2</td>
+                        <td>선택한 인물의 처지, 감정, 이해관계가 <u>구체적으로</u> 드러나며, 답안 전반에서 해당 관점이 일관되게 유지됨</td>
+                    </tr>
+                    <tr>
+                        <td class="score-cell">1</td>
+                        <td>
+                            인물을 선택하였으나 서술이 추상적이거나, 관점이 흐려져 일반적인 설명에 가까움
+                            <div class="min-req">▸ <strong>최소 충족:</strong> 인물을 선택했고, 답안에 해당 인물 관련 표현이 1회 이상 나타남</div>
+                        </td>
+                    </tr>
+                    
+                    <!-- 2. 기초 사실 정확성 -->
+                    <tr>
+                        <td rowspan="2"><strong>2. 기초 사실 정확성</strong><br>(3문장)</td>
+                        <td class="score-cell">2</td>
+                        <td>3·1 운동의 전개, 일제의 대응(탄압), 임시정부 수립의 필요성을 <u>핵심에 맞게 정확히</u> 서술함</td>
+                    </tr>
+                    <tr>
+                        <td class="score-cell">1</td>
+                        <td>
+                            관련 사실을 서술하였으나 내용이 모호하거나, 일부 사실에 혼동이 있어 정확성이 부족함
+                            <div class="min-req">▸ <strong>최소 충족:</strong> 핵심 요소(3·1 운동 전개 / 일제 대응 / 임시정부 필요성) 3개 중 2개 이상 언급</div>
+                        </td>
+                    </tr>
+                    
+                    <!-- 3. 인과 설명 -->
+                    <tr>
+                        <td rowspan="2"><strong>3. 인과 설명</strong><br>(왜→어떻게→그래서)</td>
+                        <td class="score-cell">2</td>
+                        <td>원인→전개→결과의 흐름이 <u>논리적으로 연결</u>되고, 임시정부 수립의 필요성이 설득력 있게 도출됨</td>
+                    </tr>
+                    <tr>
+                        <td class="score-cell">1</td>
+                        <td>
+                            사건을 서술하였으나 연결이 미흡하여 나열에 가깝거나, 결론이 맥락 없이 제시됨
+                            <div class="min-req">▸ <strong>최소 충족:</strong> 원인 / 전개 / 결과 중 2가지 요소 이상이 언급됨</div>
+                        </td>
+                    </tr>
+                    
+                    <!-- 4. 자료 통합 -->
+                    <tr>
+                        <td rowspan="4"><strong>4. 자료 통합</strong><br>(기본 1 + 심화 1)</td>
+                        <td class="score-cell">4</td>
+                        <td>
+                            기본 자료(A~D)와 심화 자료(E/F)의 핵심을 <u>정확히 해석</u>하고, 두 자료가 <u>각각 다른 역할의 근거</u>로 작용하여 주장을 설득력 있게 뒷받침함
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="score-cell">3</td>
+                        <td>두 자료의 핵심을 대체로 파악하고 연결하였으나, 한쪽 근거가 일반적이거나 연결이 단순한 수준에 머묾</td>
+                    </tr>
+                    <tr>
+                        <td class="score-cell">2</td>
+                        <td>두 자료를 언급하였으나 핵심이 불명확하거나, 자료 간 연결 없이 개별적으로 서술되어 통합이 미흡함</td>
+                    </tr>
+                    <tr>
+                        <td class="score-cell">1</td>
+                        <td>자료 선택 규칙은 준수하였으나, 내용이 부정확하거나 자료가 근거로서 기능하지 못함 (단순 인용·나열)</td>
+                    </tr>
+                    
+                    <!-- 5. 공감·존중 + 협력·소통 -->
+                    <tr>
+                        <td rowspan="2"><strong>5. 공감·존중 및<br>협력·소통</strong></td>
+                        <td class="score-cell">2</td>
+                        <td>
+                            ① 페르소나의 감정·상황이 드러나고, 다른 입장을 <u>이유 있는 선택으로 인정</u>함<br>
+                            ② 소통 규칙이 당시 맥락(<u>국내·외 상황 또는 노선 차이 중 1가지↑</u>)과 연결됨
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="score-cell">1</td>
+                        <td>
+                            공감 표현이 형식적이거나, 소통 규칙이 일반론에 그쳐 역사적 맥락과의 연결이 부족함
+                            <div class="min-req">▸ <strong>최소 충족:</strong> 공감 표현 또는 소통 규칙 중 하나 이상이 드러남</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- 2) 최종 논술 -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div class="section">
+            <div class="section-title orange">2) 최종 논술 (8점, 최저 3점) — 500자 이상</div>
+            
+            <div class="highlight-box purple">
+                <strong>▸ [8점 만점 조건]</strong> — 아래 ①, ② 모두 충족 시 8점<br><br>
+                ① 주제 관련 핵심어(3·1 운동, 임시정부, 독립, 만세, 대표 정부, 상하이, 해외 한인, 외교/무장 등)가 <strong>1개 이상</strong> 포함<br>
+                ② 3·1 운동과 임시정부 수립의 관계(원인/전개/결과)를 설명하는 문장이 <strong>2개 이상</strong> 있음, <u>또는</u> 관계 문장 1개 + <strong>자료/사실을 근거로 활용한 문장 1개↑</strong><br><br>
+                <strong style="color: #c62828;">※ 단순 키워드 나열(예: "3·1운동 임시정부 만세 독립")은 '관계 문장'으로 인정하지 않음</strong>
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">점수</th>
+                        <th style="width: 12%;">조건</th>
+                        <th>채점 기준</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="score-cell" style="background: #e3f2fd;">8점</td>
+                        <td style="text-align: center; font-size: 0.78rem;">충족</td>
+                        <td>[8점 조건] 충족: 핵심어 포함 + 관계 문장 2개↑, 또는 관계 문장 1개 + 근거 활용 문장 1개↑</td>
+                    </tr>
+                    <tr>
+                        <td class="score-cell">7점</td>
+                        <td rowspan="4" style="text-align: center; font-size: 0.78rem; background: #fff8e1;">불충족<br>(질에 따라<br>판정)</td>
+                        <td>주제 연결은 명확하나, 논리적 흐름·근거 제시·관점 유지 중 <u>1가지가 단순</u>하여 깊이가 부족함</td>
+                    </tr>
+                    <tr>
+                        <td class="score-cell">6점</td>
+                        <td>글의 흐름은 있으나 <u>부분적으로 모호하거나 단편적</u>이며, 근거·관점·논리 중 <u>2가지↑ 미흡</u></td>
+                    </tr>
+                    <tr>
+                        <td class="score-cell">5점</td>
+                        <td>주제 관련 표현은 있으나 글이 <u>파편적</u>이고 사건 간 연결이 불분명하여 일관된 설명이 성립하지 않음</td>
+                    </tr>
+                    <tr>
+                        <td class="score-cell">4점</td>
+                        <td>주제 관련 단어가 일부 있으나 <u>문장 구성이 미흡</u>하거나 무관한 내용이 혼재되어 답안 완결성 부족</td>
+                    </tr>
+                    <tr>
+                        <td class="score-cell" style="background: #ffebee;">3점</td>
+                        <td style="text-align: center; font-size: 0.78rem;">최저</td>
+                        <td>이름만 기재, 무의미한 기호 나열, 백지 수준 등 <u>실질적인 답안 내용이 없음</u></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- 3) 꼼수 방지 감점 규정 -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div class="section">
+            <div class="section-title red">3) ⚠️ 꼼수 방지 감점 규정</div>
+            
+            <div class="highlight-box red">
+                <div class="penalty-item">
+                    <span class="penalty-icon">1</span>
+                    <div class="penalty-content">
+                        <strong>3번 인과 설명 — 예시 공식 그대로 복사</strong><br>
+                        <span style="font-size: 0.85rem;">
+                            구글폼에 제시된 예시("왜? → 일제의 억압, 민족자결주의 확산 / 어떻게? → 전국으로 시위 확산...")를 그대로 복사한 경우<br>
+                            → <strong style="color: #c62828;">1점 처리</strong> (자기 말로 재구성 필수)
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="penalty-item">
+                    <span class="penalty-icon">2</span>
+                    <div class="penalty-content">
+                        <strong>5번 소통 규칙 — 예시 규칙 그대로 복사</strong><br>
+                        <span style="font-size: 0.85rem;">
+                            구글폼에 제시된 예시("규칙 1: 중요한 결정은 반드시 회의를 통해 다수결로 정한다...")를 그대로 복사한 경우<br>
+                            → <strong style="color: #c62828;">1점 처리</strong> (자신만의 규칙 창안 필수)
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="penalty-item">
+                    <span class="penalty-icon">3</span>
+                    <div class="penalty-content">
+                        <strong>6번 최종 논술 — 같은 내용 반복하여 분량만 채움</strong><br>
+                        <span style="font-size: 0.85rem;">
+                            동일한 문단/문장을 복사-붙여넣기하여 500자를 채운 경우<br>
+                            → <strong style="color: #c62828;">2점 감점</strong> (8점 조건 충족해도 최대 6점)
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="highlight-box yellow" style="margin-top: 15px;">
+                <strong>📌 판별 기준:</strong> 자료/예시를 "참고"하되 <u>자기 표현으로 재구성</u>하면 인정. 문장 구조·어휘까지 동일하면 복사로 판정.
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- 4) AI 채점 절차 -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div class="section">
+            <div class="section-title green">4) 채점 점수 산출 절차</div>
+            
+            <div class="procedure-box">
+                <h4>📋 채점 순서</h4>
+                <ol>
+                    <li><strong>과정 1~3, 5번:</strong> 각 항목을 <strong>2점 또는 1점</strong> 중 하나로만 판정 (중간 점수 없음)</li>
+                    <li><strong>4번 자료 통합:</strong> <strong>4 / 3 / 2 / 1</strong> 중 하나로만 판정</li>
+                    <li><strong>꼼수 확인:</strong> 3번·5번 예시 복사 여부 → 해당 시 <strong>1점</strong> 처리</li>
+                    <li><strong>최종 논술:</strong> <u>먼저</u> [8점 조건] 충족 여부 판단
+                        <br>→ 충족 시: <strong>8점</strong> (단, 반복 꼼수 시 <strong>-2점</strong>)
+                        <br>→ 불충족 시: 서술의 질에 따라 <strong>7 / 6 / 5 / 4점</strong>
+                        <br>→ 실질 답안 없음: <strong>3점</strong>
+                    </li>
+                    <li><strong>페르소나 일관성:</strong> 1번 선택 인물이 5번·6번에서 유지되는지 최종 확인</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- 페이지 나눔 -->
+        <div class="page-break"></div>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- 5) 모범답안 -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div class="section">
+            <div class="section-title purple">5) 모범답안 (20점 만점 예시)</div>
+            
+            <div class="model-answer">
+                <h4>📝 1단계: 페르소나 설정</h4>
+                <div class="model-answer-content">
+                    <strong>나의 역할:</strong> 상하이에 모인 20대 청년 독립운동가 '김독립'
+                </div>
+            </div>
+            
+            <div class="model-answer">
+                <h4>📝 2단계: 사실 3문장</h4>
+                <div class="model-answer-content">
+                    ① 1919년 3월 1일, 민족 대표들이 독립선언서를 발표하고 만세 시위가 시작되었다.<br>
+                    ② 일제는 화성 제암리 등에서 무자비한 학살과 탄압을 자행했다.<br>
+                    ③ 3·1 운동의 결과, 독립운동을 체계적으로 이끌기 위해 1919년 4월 상하이에서 대한민국 임시정부가 수립되었다.
+                </div>
+            </div>
+            
+            <div class="model-answer">
+                <h4>📝 3단계: 인과 설명 (Why - How - Therefore)</h4>
+                <div class="model-answer-content">
+                    <strong>(Why)</strong> 3·1 운동을 통해 온 겨레가 일어났지만, 이를 하나로 모을 지도부가 없어 일제의 무력 탄압(제암리 사건 등)에 큰 희생을 치렀다.<br><br>
+                    <strong>(How)</strong> 국내외 독립운동가들이 상하이 등에 모여 흩어진 마음을 하나로 모으고 조직을 정비했다.<br><br>
+                    <strong>(Therefore)</strong> 왕의 나라(제국)가 아닌 국민이 주인인 나라 '대한민국' 임시정부를 수립하여 조직적인 독립 전쟁을 준비하게 되었다.
+                </div>
+            </div>
+            
+            <div class="model-answer">
+                <h4>📝 4단계: 자료 선택 및 근거</h4>
+                <div class="model-answer-content">
+                    <strong>[기본] 자료 D</strong> (대한민국 임시정부의 탄생): 3·1 운동의 열기가 '우리 민족을 이끌 정부가 필요하다'는 깨달음으로 이어졌음을 명시함.<br><br>
+                    <strong>[심화] 자료 F</strong> (독립을 향한 서로 다른 길): 독립운동가들 사이에서도 외교론과 무장 투쟁론 등 의견이 갈렸으므로, 이를 조율하고 하나의 목소리를 낼 구심점(정부)이 필수적이었음.
+                </div>
+            </div>
+            
+            <div class="model-answer">
+                <h4>📝 5단계: 공감 + 소통 규칙</h4>
+                <div class="model-answer-content">
+                    <strong>[나의 감정]</strong> 제암리 학살 소식을 듣고 피가 끓는 분노를 느꼈으나, 당장 복수하고 싶은 마음과 냉철하게 미래를 준비해야 한다는 현실 사이에서 고민됨.<br><br>
+                    <strong>[타인 이해]</strong> 나는 당장 총을 들고 싸우고 싶지만(무장 투쟁), 이승만 박사처럼 외교를 통해 세계의 도움을 얻어야 한다는 주장(외교론)도 일리가 있음을 인정해야 함.<br><br>
+                    <strong>[소통 규칙 1]</strong> 존중의 원칙: "총을 든 자와 펜을 든 자는 서로를 비난하지 않는다." (무장 투쟁과 외교 활동을 서로 다른 역할로 인정)<br>
+                    <strong>[소통 규칙 2]</strong> 연결의 원칙: "교통국과 같은 비밀 연락망을 통해 미주, 러시아, 중국의 동포들이 모은 자금을 투명하게 관리하고 전달한다."
+                </div>
+            </div>
+            
+            <div class="model-answer">
+                <h4>📝 6단계: 최종 논술 (500자 이상)</h4>
+                <div class="model-answer-content">
+                    나는 1919년 상하이에 모인 청년 독립운동가다. 세계대전 뒤 퍼진 민족자결주의는 "우리도 독립을 요구할 수 있다"는 희망을 키웠고, 국내의 무단통치와 헌병경찰의 탄압은 분노를 쌓게 했다. 우리는 독립선언으로 주권을 알리고 만세 시위를 벌였지만(자료 A), 일제의 강한 진압으로 많은 사람이 잡히고 희생이 커졌다(자료 C). 이 경험은 '의지'만으로는 부족하며, 흩어진 힘을 한 방향으로 묶을 대표 기구가 필요하다는 사실을 보여 주었다. 그래서 3·1 운동 이후 상하이를 중심으로 대한민국 임시정부가 세워졌고(자료 D), '국민이 주인인 나라'를 목표로 독립운동을 조직하려 했다. 다만 외교를 중시하는 입장과 무장 투쟁을 준비하자는 입장이 갈리기도 했다. 예를 들어 이승만의 글은 폭력적 방식이 지지와 명분을 잃을 수 있으니 세계에 우리의 정의를 알리는 외교가 중요하다고 말한다(자료 F). 나는 서로를 비난하지 말고, 국내·해외 의견을 정기적으로 공유하며 합의로 방향을 정하는 소통 규칙이 필요하다고 본다.
+                </div>
+            </div>
+            
+            <div class="highlight-box green">
+                <strong>✅ 모범답안 채점 포인트:</strong><br>
+                • 페르소나 일관성 ✓ (청년 독립운동가 시점 유지)<br>
+                • 사실 3요소 정확 ✓ (전개/탄압/필요성)<br>
+                • 인과 논리 연결 ✓ (Why-How-Therefore 자기 말)<br>
+                • 자료 D+F 역할 분담 ✓ (정부 필요 + 노선 조율)<br>
+                • 공감+타인 인정 ✓ (분노 vs 냉철, 외교론 인정)<br>
+                • 소통 규칙 창의적 ✓ ("총을 든 자와 펜을 든 자")<br>
+                • [8점 조건] 완전 충족 ✓
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- 6) 사실 오류 체크리스트 -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div class="section">
+            <div class="section-title red">6) 사실 오류 체크리스트 (2번 기초 사실 감점 사유)</div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">✗</th>
+                        <th style="width: 45%;">오류 내용</th>
+                        <th>정답</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center; color: #c62828; font-weight: bold;">✗</td>
+                        <td>"3·1 운동이 <strong>1945년</strong>에 일어났다"</td>
+                        <td>1919년 3월 1일</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; color: #c62828; font-weight: bold;">✗</td>
+                        <td>"임시정부가 <strong>서울/평양</strong>에서 수립되었다"</td>
+                        <td>상하이(상해)에서 수립</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; color: #c62828; font-weight: bold;">✗</td>
+                        <td>"3·1 운동으로 <strong>독립을 달성</strong>했다"</td>
+                        <td>독립 달성 실패, 임시정부 수립의 계기</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; color: #c62828; font-weight: bold;">✗</td>
+                        <td>"일제가 3·1 운동을 <strong>지지/묵인</strong>했다"</td>
+                        <td>강하게 탄압, 많은 희생자 발생</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; color: #c62828; font-weight: bold;">✗</td>
+                        <td>"<strong>학생/지식인만</strong> 참여했다"</td>
+                        <td>학생, 상인, 농민, 노동자 등 다양한 계층</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; color: #c62828; font-weight: bold;">✗</td>
+                        <td>"임시정부가 <strong>무장투쟁만/외교만</strong> 했다"</td>
+                        <td>외교와 무장투쟁 노선이 공존, 때로는 갈등</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- 7) 총점 요약표 -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div class="section">
+            <div class="section-title blue">7) 총점 요약표</div>
+            
+            <table class="summary-table">
+                <thead>
+                    <tr>
+                        <th>영역</th>
+                        <th>평가 요소</th>
+                        <th>만점</th>
+                        <th>최저</th>
+                        <th>소계</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="5" style="font-weight: 600; background: #f5f5f5;">과정</td>
+                        <td style="text-align: left;">1. 페르소나 적용</td>
+                        <td>2점</td>
+                        <td>1점</td>
+                        <td rowspan="5" style="font-weight: 600;">12점<br><span style="font-size: 0.75rem; color: #666;">(최저 5점)</span></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">2. 기초 사실 정확성</td>
+                        <td>2점</td>
+                        <td>1점</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">3. 인과 설명</td>
+                        <td>2점</td>
+                        <td>1점</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">4. 자료 통합</td>
+                        <td>4점</td>
+                        <td>1점</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">5. 공감·존중 / 협력·소통</td>
+                        <td>2점</td>
+                        <td>1점</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600; background: #fff3e0;">논술</td>
+                        <td style="text-align: left;">6. 최종 논술 (500자↑)</td>
+                        <td>8점</td>
+                        <td>3점</td>
+                        <td style="font-weight: 600;">8점<br><span style="font-size: 0.75rem; color: #666;">(최저 3점)</span></td>
+                    </tr>
+                    <tr style="background: #e8eaf6;">
+                        <td colspan="2" style="font-weight: 700;">총점</td>
+                        <td style="font-weight: 700;">20점</td>
+                        <td style="font-weight: 700;">8점</td>
+                        <td>—</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 푸터 -->
+        <div class="footer-note">
+            <strong>유의사항</strong><br>
+            • 서약 미동의 시 답안 제출 불가 (재작성 안내)<br>
+            • 과정 영역: 1~3, 5번은 2점/1점 2단계 | 4번은 4/3/2/1 4단계 평가<br>
+            • 최종 논술: [8점 조건] 충족 여부 우선 판단 → 불충족 시 질에 따라 7~4점, 실질 답안 없으면 3점<br>
+            • <strong>꼼수 감점:</strong> 예시 복사(3번·5번) → 1점 처리 | 반복으로 분량 채움(6번) → 2점 감점<br>
+            • <strong>전체 최저점:</strong> 8점 (과정 최저 5점 + 논술 최저 3점)<br>
+            • AI, 번역기, 대필 사용 및 답안 공유 적발 시 재작성 조치
+        </div>
+    </div>
+    
+    <button class="print-btn no-print" onclick="window.print()">🖨️ 인쇄</button>
+</body>
+</html>

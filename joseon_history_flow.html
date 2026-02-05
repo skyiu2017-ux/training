@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조선의 건국과 붕당의 형성 | 한국사 인포그래픽</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+        
+        :root {
+            --primary: #1E40AF;
+            --secondary: #F59E0B;
+            --accent: #DC2626;
+            --success: #10B981;
+            --purple: #7C3AED;
+            --dark: #1F2937;
+            --light: #F3F4F6;
+            --hungu: #DC2626;
+            --sarim: #1E40AF;
+            --dongin: #059669;
+            --seoin: #4F46E5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        .serif { font-family: 'Nanum Myeongjo', serif; }
+
+        /* Header */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #1E3A8A 100%);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+
+        .badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero p { font-size: 1.1rem; opacity: 0.9; }
+
+        /* Container */
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem 1rem; }
+
+        /* Section */
+        section { margin-bottom: 3rem; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-weight: 900;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: #6B7280;
+            font-size: 0.95rem;
+        }
+
+        /* Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr 1fr; }
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        /* Card */
+        .card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .card-header {
+            padding: 1.25rem;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .card-header h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .card-body { padding: 1.25rem; }
+
+        /* Chart Container */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+
+        .chart-container-lg { height: 350px; }
+
+        /* Insight Box */
+        .insight-box {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+            border-left: 4px solid var(--secondary);
+            border-radius: 0 0.75rem 0.75rem 0;
+            padding: 1rem 1.25rem;
+            margin-top: 1rem;
+        }
+
+        .insight-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .insight-text {
+            font-size: 0.95rem;
+            color: #92400E;
+            font-weight: 500;
+        }
+
+        /* Deep Insight */
+        .deep-insight {
+            background: linear-gradient(135deg, #EDE9FE 0%, #DDD6FE 100%);
+            border-left: 4px solid var(--purple);
+            border-radius: 0 0.75rem 0.75rem 0;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .deep-insight-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .deep-insight h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #5B21B6;
+            margin-bottom: 0.5rem;
+        }
+
+        .deep-insight p {
+            font-size: 0.95rem;
+            color: #6D28D9;
+        }
+
+        /* Comparison Cards */
+        .faction-card {
+            border-radius: 1rem;
+            padding: 1.5rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faction-card.hungu { background: linear-gradient(135deg, var(--hungu) 0%, #991B1B 100%); }
+        .faction-card.sarim { background: linear-gradient(135deg, var(--sarim) 0%, #1E3A8A 100%); }
+
+        .faction-card h3 {
+            font-size: 1.3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .faction-card ul {
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        .faction-card li {
+            padding: 0.4rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .faction-card li:last-child { border-bottom: none; }
+
+        .faction-card .label { opacity: 0.8; }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #E5E7EB;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.65rem;
+            top: 0.25rem;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px var(--accent);
+        }
+
+        .timeline-item.highlight::before {
+            width: 16px;
+            height: 16px;
+            left: -1.75rem;
+            background: var(--secondary);
+            box-shadow: 0 0 0 4px var(--secondary);
+        }
+
+        .timeline-content {
+            background: #FEF2F2;
+            border: 1px solid #FECACA;
+            border-radius: 0.75rem;
+            padding: 1rem;
+        }
+
+        .timeline-item.highlight .timeline-content {
+            background: #FFFBEB;
+            border-color: #FCD34D;
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.2);
+        }
+
+        .timeline-year {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .timeline-item.highlight .timeline-year { color: #B45309; }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 0.25rem 0;
+        }
+
+        .timeline-desc {
+            font-size: 0.9rem;
+            color: #6B7280;
+        }
+
+        .timeline-king {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            margin-top: 0.5rem;
+        }
+
+        /* Tree Diagram */
+        .tree-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem;
+        }
+
+        .tree-root {
+            background: var(--sarim);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .tree-line {
+            width: 3px;
+            height: 2rem;
+            background: #9CA3AF;
+        }
+
+        .tree-branch {
+            display: flex;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .tree-branch::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 25%;
+            right: 25%;
+            height: 3px;
+            background: #9CA3AF;
+        }
+
+        .tree-node {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 0.5rem;
+        }
+
+        .tree-node-line {
+            width: 3px;
+            height: 1.5rem;
+            background: #9CA3AF;
+        }
+
+        .tree-node-box {
+            width: 100%;
+            max-width: 200px;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            color: white;
+            text-align: center;
+        }
+
+        .tree-node-box.dongin { background: linear-gradient(135deg, var(--dongin) 0%, #047857 100%); }
+        .tree-node-box.seoin { background: linear-gradient(135deg, var(--seoin) 0%, #4338CA 100%); }
+
+        .tree-node-box h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .tree-node-box p { font-size: 0.8rem; opacity: 0.9; }
+
+        /* Issue Box */
+        .issue-box {
+            background: white;
+            border: 2px dashed #9CA3AF;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .issue-box h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .issue-box p {
+            font-size: 0.85rem;
+            color: #6B7280;
+        }
+
+        /* Flow Summary */
+        .flow-summary {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 1rem;
+        }
+
+        .flow-item {
+            padding: 0.6rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            background: white;
+            border: 1px solid #E5E7EB;
+        }
+
+        .flow-item.red { background: #FEE2E2; color: var(--accent); border-color: #FECACA; }
+        .flow-item.blue { background: #DBEAFE; color: var(--primary); border-color: #BFDBFE; }
+        .flow-item.purple { background: #EDE9FE; color: var(--purple); border-color: #DDD6FE; }
+
+        .flow-arrow { color: #9CA3AF; font-size: 1.2rem; }
+
+        /* Stats */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .stat-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            text-align: center;
+            border-left: 4px solid var(--primary);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #6B7280;
+        }
+
+        /* Key Point */
+        .key-point {
+            display: flex;
+            gap: 1rem;
+            background: #F0FDF4;
+            border: 1px solid #BBF7D0;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .key-point-icon {
+            flex-shrink: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--success);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .key-point-content h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #065F46;
+            margin-bottom: 0.25rem;
+        }
+
+        .key-point-content p {
+            font-size: 0.9rem;
+            color: #047857;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer h3 { font-size: 1.2rem; margin-bottom: 1rem; }
+        footer p { font-size: 0.9rem; opacity: 0.8; }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .flow-summary { flex-direction: column; }
+            .flow-arrow { transform: rotate(90deg); }
+            .tree-branch { flex-direction: column; align-items: center; gap: 1rem; }
+            .tree-branch::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="hero">
+        <div class="hero-content">
+            <span class="badge">중3 한국사 핵심정리</span>
+            <h1 class="serif">조선의 건국과<br>붕당의 형성</h1>
+            <p>사림(士林)은 어떻게 역사의 주인공이 되었는가?</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- 핵심 숫자 -->
+        <section>
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-number">1392</div>
+                    <div class="stat-label">조선 건국</div>
+                </div>
+                <div class="stat-card" style="border-color: var(--accent);">
+                    <div class="stat-number" style="color: var(--accent);">4회</div>
+                    <div class="stat-label">사화 발생</div>
+                </div>
+                <div class="stat-card" style="border-color: var(--success);">
+                    <div class="stat-number" style="color: var(--success);">70년</div>
+                    <div class="stat-label">사림 재기 기간</div>
+                </div>
+                <div class="stat-card" style="border-color: var(--purple);">
+                    <div class="stat-number" style="color: var(--purple);">1575</div>
+                    <div class="stat-label">동인·서인 분화</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: 이념의 전환 -->
+        <section>
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <h2 class="section-title">새로운 나라, 조선: 이념의 대전환</h2>
+                <p class="section-subtitle">단순한 왕조 교체가 아닌, 국가 운영 원리의 완전한 교체</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>이념의 전환: 고려 → 조선</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="ideologyChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>권력 기반의 변화</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="powerChart"></canvas>
+                        </div>
+                        <div class="insight-box">
+                            <div class="insight-label">핵심 통찰</div>
+                            <div class="insight-text">왕조 교체 = 왕의 성씨 변경이 아니라 <strong>국가 운영 원리의 교체</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deep-insight">
+                <div class="deep-insight-label">
+                    <span>🔍</span> 더 깊이 보기
+                </div>
+                <h4>왜 성리학이어야 했는가?</h4>
+                <p>불교는 내세 중심, 성리학은 현세 중심. 조선은 "지금 여기서 어떻게 살 것인가"를 중시하는 실용적 통치 이념이 필요했습니다. 성리학의 '대의명분'과 '예치(禮治)'는 왕권을 정당화하면서도 견제할 수 있는 이중적 기능을 했습니다.</p>
+            </div>
+        </section>
+
+        <!-- Section 2: 훈구 vs 사림 -->
+        <section>
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <h2 class="section-title">훈구 vs 사림: 세기의 라이벌</h2>
+                <p class="section-subtitle">'기득권 vs 신진세력'의 구조적 대결</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="faction-card hungu">
+                    <h3>🐯 훈구파 (勳舊派)</h3>
+                    <ul>
+                        <li><span class="label">출신:</span> 건국·정난 공신</li>
+                        <li><span class="label">기반:</span> 대토지 + 고위 관직</li>
+                        <li><span class="label">성향:</span> 부국강병, 현실주의</li>
+                        <li><span class="label">약점:</span> 도덕적 명분 부족</li>
+                        <li><span class="label">주장:</span> "우리가 나라를 지켰다!"</li>
+                    </ul>
+                </div>
+                <div class="faction-card sarim">
+                    <h3>🌲 사림파 (士林派)</h3>
+                    <ul>
+                        <li><span class="label">출신:</span> 지방 향촌 사족</li>
+                        <li><span class="label">기반:</span> 서원 + 향약 + 3사</li>
+                        <li><span class="label">성향:</span> 왕도정치, 도덕주의</li>
+                        <li><span class="label">약점:</span> 현실적 권력 부족</li>
+                        <li><span class="label">주장:</span> "훈구파는 부패했다!"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 1.5rem;">
+                <div class="card-header">
+                    <h3>세력 특성 비교 분석</h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container chart-container-lg">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deep-insight">
+                <div class="deep-insight-label">
+                    <span>🔍</span> 더 깊이 보기
+                </div>
+                <h4>왕은 왜 사림을 등용했는가?</h4>
+                <p>성종이 사림을 등용한 것은 단순한 '개혁'이 아니었습니다. <strong>훈구파를 견제하기 위한 전략적 선택</strong>이었습니다. 왕도 자신의 권력을 위해 세력 균형을 이용한 것입니다. 역사에서 "순수한 선의"로만 움직이는 권력은 드뭅니다.</p>
+            </div>
+        </section>
+
+        <!-- Section 3: 4대 사화 -->
+        <section>
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <h2 class="section-title">사림의 시련: 4대 사화(士禍)</h2>
+                <p class="section-subtitle">훈구파의 반격으로 4번의 큰 화를 입다</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <div class="timeline-year">1498년</div>
+                                    <div class="timeline-title">무오사화</div>
+                                    <div class="timeline-desc">김종직의 '조의제문'이 세조 비판으로 해석</div>
+                                    <span class="timeline-king" style="color: var(--accent);">연산군</span>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <div class="timeline-year">1504년</div>
+                                    <div class="timeline-title">갑자사화</div>
+                                    <div class="timeline-desc">폐비 윤씨 사사 사건의 복수</div>
+                                    <span class="timeline-king" style="color: var(--accent);">연산군</span>
+                                </div>
+                            </div>
+                            <div class="timeline-item highlight">
+                                <div class="timeline-content">
+                                    <div class="timeline-year">1519년 ⚡ 핵심</div>
+                                    <div class="timeline-title">기묘사화</div>
+                                    <div class="timeline-desc">조광조의 급진 개혁 → '주초위왕' 모함으로 제거</div>
+                                    <span class="timeline-king" style="color: #B45309;">중종</span>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <div class="timeline-year">1545년</div>
+                                    <div class="timeline-title">을사사화</div>
+                                    <div class="timeline-desc">외척 간 권력 다툼 (윤원형 vs 윤임)</div>
+                                    <span class="timeline-king" style="color: var(--accent);">명종</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>사화의 패턴 분석</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="sahwaChart"></canvas>
+                        </div>
+                        <div class="insight-box">
+                            <div class="insight-label">핵심 통찰</div>
+                            <div class="insight-text">사화는 '착한 놈 vs 나쁜 놈'이 아니라 <strong>권력 구조의 충돌</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deep-insight">
+                <div class="deep-insight-label">
+                    <span>🔍</span> 더 깊이 보기
+                </div>
+                <h4>사화의 숨겨진 공통점</h4>
+                <p>4대 사화는 원인이 각각 달라 보이지만, 모두 <strong>"새로운 세력 등장 → 기존 세력 반발 → 폭력적 충돌"</strong>이라는 동일한 패턴을 따릅니다. 이것은 조선만의 문제가 아니라, 권력 이동 시 발생하는 보편적 갈등 구조입니다.</p>
+            </div>
+        </section>
+
+        <!-- Section 4: 사림의 부활 -->
+        <section>
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <h2 class="section-title">사림의 부활 전략: 서원과 향약</h2>
+                <p class="section-subtitle">중앙에서 쫓겨나도 지방에서 '시스템'을 구축하다</p>
+            </div>
+
+            <div class="key-point">
+                <div class="key-point-icon">!</div>
+                <div class="key-point-content">
+                    <h4>사림이 최종 승리한 진짜 이유</h4>
+                    <p>훈구파는 <strong>개인의 권력</strong>에 의존했지만, 사림은 <strong>재생산 가능한 시스템</strong>(서원=인재양성, 향약=여론장악)을 만들었습니다. 개인은 죽어도 시스템은 살아남습니다.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>사림 세력의 성장 곡선 (1500~1600)</h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container chart-container-lg">
+                        <canvas id="growthChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-3" style="margin-top: 1.5rem;">
+                <div class="card">
+                    <div class="card-body" style="text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🏫</div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.5rem;">서원 (書院)</h4>
+                        <p style="font-size: 0.9rem; color: #6B7280;">인재 양성 시스템<br>→ 미래 관료 확보</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body" style="text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📜</div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.5rem;">향약 (鄕約)</h4>
+                        <p style="font-size: 0.9rem; color: #6B7280;">지역 자치 규약<br>→ 여론 장악</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body" style="text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">⚖️</div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.5rem;">3사 (三司)</h4>
+                        <p style="font-size: 0.9rem; color: #6B7280;">언론 기능 담당<br>→ 도덕적 비판권</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deep-insight">
+                <div class="deep-insight-label">
+                    <span>🔍</span> 더 깊이 보기
+                </div>
+                <h4>지방의 역설적 힘</h4>
+                <p>사림이 중앙에서 쫓겨난 것이 오히려 <strong>전화위복</strong>이 되었습니다. 지방에서 교육과 여론을 장악하면서, 훈구파가 손댈 수 없는 "밑바닥부터의 권력"을 쌓았습니다. 현대로 치면 <strong>풀뿌리 운동</strong>과 비슷합니다.</p>
+            </div>
+        </section>
+
+        <!-- Section 5: 붕당의 형성 -->
+        <section>
+            <div class="section-header">
+                <div class="section-number">5</div>
+                <h2 class="section-title">최후의 승리, 그리고 분열: 붕당의 형성</h2>
+                <p class="section-subtitle">사림이 집권하자, 내부에서 의견이 갈리다</p>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="tree-diagram">
+                        <div class="tree-root">사림 (士林)<br><span style="font-size: 0.8rem; font-weight: 400;">선조 때 집권</span></div>
+                        <div class="tree-line"></div>
+                        <div class="tree-branch">
+                            <div class="tree-node">
+                                <div class="tree-node-line"></div>
+                                <div class="tree-node-box dongin">
+                                    <h4>동인 (東人)</h4>
+                                    <p>신진 사류 (강경파)<br>김효원 중심<br>이황·조식 학파</p>
+                                </div>
+                            </div>
+                            <div class="tree-node">
+                                <div class="tree-node-line"></div>
+                                <div class="tree-node-box seoin">
+                                    <h4>서인 (西人)</h4>
+                                    <p>기성 사류 (온건파)<br>심의겸 중심<br>이이·성혼 학파</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="issue-box">
+                            <h4>⚖️ 핵심 쟁점: 이조 전랑</h4>
+                            <p>후임자 추천권(자천권)을 가진 인사권의 핵심</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 1.5rem;">
+                <div class="card-header">
+                    <h3>동인 vs 서인: 정책 성향 비교</h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="factionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deep-insight">
+                <div class="deep-insight-label">
+                    <span>🔍</span> 더 깊이 보기
+                </div>
+                <h4>붕당은 정말 '나쁜 것'인가?</h4>
+                <p>붕당 정치는 단순한 "파벌 싸움"이 아니라, <strong>서로 견제하고 비판하는 '공론 정치'의 시작</strong>이었습니다. 현대 민주주의의 정당 정치와 비슷한 구조입니다. 문제는 붕당 자체가 아니라, 나중에 '상호 견제'가 '상호 몰살'로 변질된 것입니다.</p>
+            </div>
+        </section>
+
+        <!-- 역사 흐름 정리 -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">📌 역사의 흐름 한눈에</h2>
+            </div>
+            
+            <div class="flow-summary">
+                <div class="flow-item">1. 건국 (1392)</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-item">2. 훈구 집권</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-item red">3. 사화 (위기)</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-item blue">4. 사림 집권</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-item purple">5. 붕당 형성 (1575)</div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <h3>핵심 정리</h3>
+        <p>붕당 정치는 단순한 싸움이 아니라, 서로 견제하고 비판하는 <strong>'공론 정치'</strong>의 시작이었습니다.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.6;">중3 한국사 · 조선 전기 ~ 붕당 형성</p>
+    </footer>
+
+    <script>
+        // 공통 설정
+        Chart.defaults.font.family = "'Noto Sans KR', sans-serif";
+        
+        // 1. 이념 전환 차트
+        new Chart(document.getElementById('ideologyChart'), {
+            type: 'bar',
+            data: {
+                labels: ['불교 (고려)', '성리학 (조선)'],
+                datasets: [{
+                    label: '국정 이념 비중',
+                    data: [85, 95],
+                    backgroundColor: ['#9CA3AF', '#1E40AF'],
+                    borderRadius: 8,
+                    barThickness: 40
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: (ctx) => `영향력: ${ctx.raw}%`
+                        }
+                    }
+                },
+                scales: {
+                    x: { 
+                        beginAtZero: true, 
+                        max: 100,
+                        grid: { display: false },
+                        ticks: { callback: (v) => v + '%' }
+                    },
+                    y: { 
+                        grid: { display: false },
+                        ticks: { font: { weight: 'bold' } }
+                    }
+                }
+            }
+        });
+
+        // 2. 권력 기반 변화
+        new Chart(document.getElementById('powerChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['양반 관료', '왕실 권력', '지방 세력'],
+                datasets: [{
+                    data: [50, 30, 20],
+                    backgroundColor: ['#1E40AF', '#F59E0B', '#10B981'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { padding: 15, usePointStyle: true }
+                    }
+                }
+            }
+        });
+
+        // 3. 레이더 차트
+        new Chart(document.getElementById('radarChart'), {
+            type: 'radar',
+            data: {
+                labels: ['중앙 정치 권력', '경제력 (토지)', '군사적 배경', '도덕적 명분', '지방 여론 지지'],
+                datasets: [{
+                    label: '훈구파',
+                    data: [90, 95, 80, 20, 30],
+                    fill: true,
+                    backgroundColor: 'rgba(220, 38, 38, 0.2)',
+                    borderColor: '#DC2626',
+                    pointBackgroundColor: '#DC2626',
+                    pointBorderColor: '#fff',
+                    borderWidth: 3
+                }, {
+                    label: '사림파',
+                    data: [30, 40, 10, 90, 85],
+                    fill: true,
+                    backgroundColor: 'rgba(30, 64, 175, 0.2)',
+                    borderColor: '#1E40AF',
+                    pointBackgroundColor: '#1E40AF',
+                    pointBorderColor: '#fff',
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { padding: 20, font: { size: 13, weight: 'bold' } }
+                    }
+                },
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: { display: false, stepSize: 20 },
+                        pointLabels: { font: { size: 11, weight: 'bold' } }
+                    }
+                }
+            }
+        });
+
+        // 4. 사화 패턴 분석
+        new Chart(document.getElementById('sahwaChart'), {
+            type: 'bar',
+            data: {
+                labels: ['무오', '갑자', '기묘', '을사'],
+                datasets: [{
+                    label: '피해 규모',
+                    data: [40, 70, 85, 50],
+                    backgroundColor: ['#FECACA', '#FECACA', '#FCD34D', '#FECACA'],
+                    borderColor: ['#DC2626', '#DC2626', '#F59E0B', '#DC2626'],
+                    borderWidth: 2,
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: (ctx) => {
+                                const causes = ['세조 비판', '왕의 복수', '급진 개혁', '외척 다툼'];
+                                return `원인: ${causes[ctx.dataIndex]}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: { 
+                        beginAtZero: true, 
+                        max: 100,
+                        title: { display: true, text: '피해 규모 (추정)' }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        // 5. 사림 성장 차트
+        new Chart(document.getElementById('growthChart'), {
+            type: 'line',
+            data: {
+                labels: ['1500 (연산군)', '1520 (중종)', '1545 (명종)', '1567 (선조 즉위)', '1575 (붕당)', '1600'],
+                datasets: [{
+                    label: '사림 영향력',
+                    data: [10, 25, 20, 70, 85, 95],
+                    fill: true,
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    borderColor: '#10B981',
+                    borderWidth: 3,
+                    tension: 0.4,
+                    pointRadius: 6,
+                    pointBackgroundColor: '#fff',
+                    pointBorderWidth: 3
+                }, {
+                    label: '서원 설립 수',
+                    data: [5, 15, 25, 50, 65, 80],
+                    fill: false,
+                    borderColor: '#1E40AF',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    tension: 0.4,
+                    pointRadius: 5,
+                    pointBackgroundColor: '#fff',
+                    pointBorderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: { padding: 15, usePointStyle: true }
+                    },
+                    annotation: {}
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: { display: true, text: '지수 (%)' },
+                        grid: { borderDash: [3, 3] }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        // 6. 동인 vs 서인
+        new Chart(document.getElementById('factionChart'), {
+            type: 'bar',
+            data: {
+                labels: ['훈구 청산 강도', '개혁 속도', '학문적 순수성', '현실 타협성'],
+                datasets: [{
+                    label: '동인 (강경파)',
+                    data: [90, 85, 80, 30],
+                    backgroundColor: 'rgba(5, 150, 105, 0.7)',
+                    borderColor: '#059669',
+                    borderWidth: 2,
+                    borderRadius: 4
+                }, {
+                    label: '서인 (온건파)',
+                    data: [50, 45, 60, 80],
+                    backgroundColor: 'rgba(79, 70, 229, 0.7)',
+                    borderColor: '#4F46E5',
+                    borderWidth: 2,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { padding: 15, font: { weight: 'bold' } }
+                    }
+                },
+                scales: {
+                    y: { 
+                        beginAtZero: true, 
+                        max: 100,
+                        ticks: { callback: (v) => v + '%' }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
