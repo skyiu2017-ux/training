@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>갑신정변과 갑오개혁 수행평가</title>
+    <title>갑신정변 vs 갑오개혁 수행평가 채점기준표</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
         
         * {
             margin: 0;
@@ -13,1534 +13,823 @@
             box-sizing: border-box;
         }
         
-        :root {
-            --primary-gradient: linear-gradient(135deg, #2c3e50 0%, #4a6fa5 100%);
-            --accent-gold: #d4a373;
-            --accent-teal: #457b9d;
-            --accent-coral: #e07a5f;
-            --glass-bg: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.18);
-            --text-light: #f8f9fa;
-            --shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.2);
+        @media print {
+            body { padding: 10px; font-size: 10px; }
+            .container { box-shadow: none; padding: 15px; }
+            .no-print { display: none; }
+            .page-break { page-break-before: always; }
+            .section { margin-bottom: 12px; }
         }
         
         body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background: linear-gradient(160deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
-            min-height: 100vh;
+            font-family: 'Noto Sans KR', '맑은 고딕', sans-serif;
+            background: #f5f5f5;
             padding: 40px 20px;
-            position: relative;
-            overflow-x: hidden;
-        }
-        
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at 20% 20%, rgba(212, 163, 115, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(69, 123, 157, 0.08) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 0;
+            line-height: 1.6;
+            color: #333;
+            font-size: 12.5px;
         }
         
         .container {
-            max-width: 1100px;
+            max-width: 900px;
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
+            background: white;
+            padding: 35px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        /* 헤더 */
-        .hero-section {
+        .header {
             text-align: center;
-            margin-bottom: 40px;
-            animation: fadeInDown 0.8s ease-out;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #2c3e50;
         }
         
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .header h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
         }
         
-        .hero-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-coral));
-            color: white;
-            padding: 6px 20px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-            letter-spacing: 0.05em;
-        }
-        
-        .hero-title {
-            font-size: 2.6rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #fff 0%, #e0e7ff 50%, var(--accent-gold) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 12px;
-            letter-spacing: -0.02em;
-            line-height: 1.3;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.15rem;
-            color: rgba(255, 255, 255, 0.8);
-            font-weight: 400;
+        .header .subtitle {
+            font-size: 0.9rem;
+            color: #555;
             margin-bottom: 8px;
         }
         
-        .hero-question {
-            font-size: 1rem;
-            color: var(--accent-gold);
-            font-weight: 500;
-            font-style: italic;
-        }
-
-        /* 시작 전 체크 배너 */
-        .start-banner {
-            background: linear-gradient(135deg, rgba(69, 123, 157, 0.25), rgba(212, 163, 115, 0.15));
-            border: 2px solid rgba(212, 163, 115, 0.4);
+        .header .version {
+            display: inline-block;
+            background: #2c3e50;
+            color: white;
+            padding: 3px 12px;
             border-radius: 20px;
-            padding: 24px 28px;
-            margin-bottom: 30px;
-            animation: pulse-glow 3s ease-in-out infinite;
+            font-size: 0.72rem;
         }
-
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(212, 163, 115, 0.15); }
-            50% { box-shadow: 0 0 35px rgba(212, 163, 115, 0.25); }
-        }
-
-        .start-banner h2 {
-            color: var(--accent-gold);
-            font-size: 1.3rem;
-            margin-bottom: 14px;
+        
+        .meta-info {
             display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .start-checklist {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 10px;
-        }
-
-        .start-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.92rem;
-        }
-
-        .start-item .check-circle {
-            width: 22px;
-            height: 22px;
-            border: 2px solid rgba(212, 163, 115, 0.6);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 0.75rem;
-            color: var(--accent-gold);
-            flex-shrink: 0;
+            gap: 30px;
+            margin-bottom: 20px;
+            padding: 12px;
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
         }
         
-        /* 글래스 카드 */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 24px;
-            border: 1px solid var(--glass-border);
-            padding: 32px;
-            margin-bottom: 24px;
-            box-shadow: var(--shadow-lg);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        .meta-item {
+            text-align: center;
         }
         
-        .glass-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(255, 255, 255, 0.25);
+        .meta-item strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 2px;
+        }
+        
+        .section {
+            margin-bottom: 18px;
         }
         
         .section-title {
-            font-size: 1.4rem;
+            font-size: 0.95rem;
             font-weight: 700;
-            color: white;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            padding: 8px 12px;
+            margin-bottom: 10px;
+            border-radius: 4px;
         }
         
-        .section-icon {
-            font-size: 1.5rem;
+        .section-title.blue {
+            background: #e3f2fd;
+            border-left: 4px solid #1976D2;
+            color: #1565c0;
         }
-
-        /* 플로우차트 */
-        .flowchart {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-            margin: 24px 0;
+        
+        .section-title.orange {
+            background: #fff3e0;
+            border-left: 4px solid #e65100;
+            color: #e65100;
         }
-
-        .flow-step {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            padding: 14px 18px;
-            color: white;
-            font-size: 0.88rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-            cursor: pointer;
+        
+        .section-title.red {
+            background: #ffebee;
+            border-left: 4px solid #c62828;
+            color: #c62828;
         }
-
-        .flow-step:hover {
-            background: linear-gradient(135deg, rgba(212, 163, 115, 0.3), rgba(69, 123, 157, 0.2));
-            border-color: var(--accent-gold);
-            transform: translateY(-2px);
+        
+        .section-title.green {
+            background: #e8f5e9;
+            border-left: 4px solid #2e7d32;
+            color: #2e7d32;
         }
-
-        .flow-number {
-            background: var(--accent-gold);
-            color: #1a1a2e;
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 0.85rem;
+        
+        .section-title.purple {
+            background: #f3e5f5;
+            border-left: 4px solid #7b1fa2;
+            color: #7b1fa2;
         }
-
-        .flow-arrow {
-            color: var(--accent-gold);
-            font-size: 1.2rem;
+        
+        .section-title.teal {
+            background: #e0f2f1;
+            border-left: 4px solid #00695c;
+            color: #00695c;
         }
-
-        /* 규칙 박스 */
-        .rules-box {
-            background: linear-gradient(135deg, rgba(224, 122, 95, 0.2), rgba(212, 163, 115, 0.1));
-            border: 1px solid rgba(224, 122, 95, 0.4);
-            border-radius: 14px;
-            padding: 18px 22px;
-            margin-top: 20px;
-            color: rgba(255, 255, 255, 0.95);
-            font-size: 0.92rem;
-            line-height: 1.7;
-        }
-
-        .rules-box strong {
-            color: var(--accent-coral);
-        }
-
-        /* 단계 카드 */
-        .step-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 18px;
-        }
-
-        .step-header {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 16px;
-        }
-
-        .step-number {
-            background: linear-gradient(135deg, var(--accent-teal), var(--accent-gold));
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1rem;
-        }
-
-        .step-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: white;
-        }
-
-        .step-time {
-            margin-left: auto;
-            background: rgba(212, 163, 115, 0.2);
-            color: var(--accent-gold);
-            padding: 4px 12px;
-            border-radius: 20px;
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
             font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+        
+        th, td {
+            border: 1px solid #bdbdbd;
+            padding: 7px 9px;
+            vertical-align: top;
+        }
+        
+        th {
+            background: #f5f5f5;
             font-weight: 600;
-        }
-
-        .step-content {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.95rem;
-            line-height: 1.75;
-        }
-
-        .step-content ul {
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-
-        .step-content li {
-            margin-bottom: 8px;
-        }
-
-        /* 페르소나 카드 */
-        .persona-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
-            margin-top: 16px;
-        }
-
-        @media (max-width: 768px) {
-            .persona-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .persona-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 14px;
-            padding: 18px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .persona-card:hover {
-            background: linear-gradient(135deg, rgba(69, 123, 157, 0.2), rgba(212, 163, 115, 0.1));
-            border-color: var(--accent-teal);
-            transform: translateY(-2px);
-        }
-
-        .persona-number {
-            display: inline-block;
-            background: var(--accent-teal);
-            color: white;
-            width: 24px;
-            height: 24px;
-            border-radius: 6px;
             text-align: center;
-            line-height: 24px;
+        }
+        
+        .area-cell {
+            background: #e8eaf6;
             font-weight: 700;
-            font-size: 0.85rem;
-            margin-right: 10px;
+            text-align: center;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            width: 30px;
         }
-
-        .persona-title {
-            color: white;
+        
+        .step-cell {
+            text-align: center;
             font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 8px;
+            background: #fafafa;
+            width: 55px;
         }
-
-        .persona-quote {
-            color: var(--accent-gold);
-            font-size: 0.88rem;
-            font-style: italic;
-            margin-bottom: 10px;
-            padding-left: 12px;
-            border-left: 2px solid var(--accent-gold);
+        
+        .element-cell {
+            width: 130px;
         }
-
-        .persona-hint {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.82rem;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 10px 12px;
-            border-radius: 8px;
-        }
-
-        .persona-hint strong {
-            color: var(--accent-coral);
-        }
-
-        /* 자료 탭 */
-        .source-tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .tab-button {
-            flex: 1;
-            padding: 14px 20px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: inherit;
-        }
-
-        .tab-button:hover {
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .tab-button.active {
-            background: linear-gradient(135deg, var(--accent-teal), var(--accent-gold));
-            color: white;
-            border-color: transparent;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
+        
+        .element-cell strong {
             display: block;
-            animation: fadeIn 0.3s ease;
+            color: #1565c0;
+            margin-bottom: 3px;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        
+        .element-cell small {
+            color: #666;
+            font-size: 0.72rem;
         }
-
-        /* 자료 카드 */
-        .source-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 14px;
-            padding: 20px;
-            margin-bottom: 14px;
-            transition: all 0.3s ease;
+        
+        .score-cell {
+            text-align: center;
+            font-weight: 700;
+            width: 40px;
+            background: #fff8e1;
         }
-
-        .source-card:hover {
-            border-color: var(--accent-gold);
+        
+        .criteria-cell {
+            line-height: 1.55;
         }
-
-        .source-label {
+        
+        .criteria-cell .level {
+            margin-bottom: 5px;
+        }
+        
+        .level-badge {
             display: inline-block;
-            background: var(--accent-teal);
-            color: white;
-            padding: 4px 12px;
+            padding: 1px 6px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+        
+        .level-badge.high {
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+        
+        .level-badge.mid {
+            background: #fff3e0;
+            color: #e65100;
+        }
+        
+        .level-badge.low {
+            background: #ffcdd2;
+            color: #c62828;
+        }
+        
+        .points-cell {
+            text-align: center;
+            width: 50px;
+            font-weight: 600;
+            color: #1565c0;
+        }
+        
+        .highlight-box {
+            padding: 12px 14px;
             border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 12px;
+            margin: 10px 0;
+            font-size: 0.82rem;
         }
-
-        .source-label.highlight {
-            background: var(--accent-coral);
+        
+        .highlight-box.blue {
+            background: #e3f2fd;
+            border: 1px solid #90caf9;
         }
-
-        .source-title {
-            color: white;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 10px;
+        
+        .highlight-box.orange {
+            background: #fff3e0;
+            border: 1px solid #ffcc80;
         }
-
-        .source-content {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 0.9rem;
-            line-height: 1.7;
+        
+        .highlight-box.red {
+            background: #ffebee;
+            border: 1px solid #ef9a9a;
         }
-
-        .source-content ul {
-            margin-left: 18px;
+        
+        .highlight-box.green {
+            background: #e8f5e9;
+            border: 1px solid #a5d6a7;
+        }
+        
+        .highlight-box.yellow {
+            background: #fffde7;
+            border: 1px solid #fff59d;
+        }
+        
+        .penalty-list {
             margin-top: 8px;
         }
-
-        .source-content li {
-            margin-bottom: 6px;
-        }
-
-        .source-keyword {
-            display: inline-block;
-            background: rgba(212, 163, 115, 0.2);
-            color: var(--accent-gold);
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 0.78rem;
-            font-weight: 500;
-            margin-top: 10px;
-        }
-
-        /* 팩트 카드 */
-        .fact-cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-top: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .fact-cards {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .fact-card {
-            background: linear-gradient(135deg, rgba(69, 123, 157, 0.15), rgba(69, 123, 157, 0.05));
-            border: 1px solid rgba(69, 123, 157, 0.3);
-            border-radius: 14px;
-            padding: 18px;
-        }
-
-        .fact-card.coral {
-            background: linear-gradient(135deg, rgba(224, 122, 95, 0.15), rgba(224, 122, 95, 0.05));
-            border-color: rgba(224, 122, 95, 0.3);
-        }
-
-        .fact-title {
-            color: var(--accent-teal);
-            font-weight: 700;
-            font-size: 0.95rem;
-            margin-bottom: 10px;
+        
+        .penalty-item {
             display: flex;
-            align-items: center;
-            gap: 8px;
+            align-items: flex-start;
+            padding: 8px 0;
+            border-bottom: 1px solid #ffcdd2;
         }
-
-        .fact-card.coral .fact-title {
-            color: var(--accent-coral);
-        }
-
-        .fact-content {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.88rem;
-            line-height: 1.65;
-        }
-
-        /* 비교 분석 표 */
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 0.9rem;
-        }
-
-        .comparison-table th,
-        .comparison-table td {
-            padding: 14px 16px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            text-align: left;
-        }
-
-        .comparison-table th {
-            background: linear-gradient(135deg, rgba(69, 123, 157, 0.3), rgba(69, 123, 157, 0.15));
-            color: white;
-            font-weight: 600;
-        }
-
-        .comparison-table td {
-            background: rgba(255, 255, 255, 0.03);
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .comparison-table td:first-child {
-            background: rgba(212, 163, 115, 0.1);
-            color: var(--accent-gold);
-            font-weight: 600;
-        }
-
-        .table-hint {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.82rem;
-            font-style: italic;
-        }
-
-        /* 팁 박스 */
-        .tip-box {
-            background: linear-gradient(135deg, rgba(69, 123, 157, 0.2), rgba(69, 123, 157, 0.08));
-            border: 1px solid rgba(69, 123, 157, 0.3);
-            border-radius: 12px;
-            padding: 16px 20px;
-            margin-top: 16px;
-        }
-
-        .tip-title {
-            color: var(--accent-teal);
-            font-weight: 700;
-            font-size: 0.95rem;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .tip-content {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.88rem;
-            line-height: 1.6;
-        }
-
-        /* 경고 박스 */
-        .warning-box {
-            background: linear-gradient(135deg, rgba(224, 122, 95, 0.2), rgba(224, 122, 95, 0.08));
-            border: 1px solid rgba(224, 122, 95, 0.4);
-            border-radius: 12px;
-            padding: 16px 20px;
-            margin-top: 16px;
-            color: rgba(255, 255, 255, 0.95);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .warning-box strong {
-            color: var(--accent-coral);
-        }
-
-        /* 예시 토글 */
-        .example-toggle {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 10px;
-            margin-top: 14px;
-            overflow: hidden;
-        }
-
-        .example-toggle-btn {
-            width: 100%;
-            padding: 12px 16px;
-            background: transparent;
-            border: none;
-            color: var(--accent-gold);
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-family: inherit;
-            transition: background 0.3s ease;
-        }
-
-        .example-toggle-btn:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .example-toggle-btn .arrow {
-            transition: transform 0.3s ease;
-        }
-
-        .example-toggle-btn.open .arrow {
-            transform: rotate(180deg);
-        }
-
-        .example-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .example-content.open {
-            max-height: 500px;
-        }
-
-        .example-content-inner {
-            padding: 16px;
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 0.88rem;
-            line-height: 1.7;
-        }
-
-        /* 체크리스트 */
-        .checklist {
-            margin-top: 20px;
-        }
-
-        .checklist-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .checklist-item:last-child {
+        
+        .penalty-item:last-child {
             border-bottom: none;
         }
-
-        .checkbox {
-            width: 22px;
-            height: 22px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        
+        .penalty-icon {
+            background: #c62828;
+            color: white;
+            min-width: 32px;
+            height: 20px;
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .checkbox:hover {
-            border-color: var(--accent-gold);
-        }
-
-        .checkbox.checked {
-            background: var(--accent-gold);
-            border-color: var(--accent-gold);
-        }
-
-        .checkbox.checked::after {
-            content: '✓';
-            color: #1a1a2e;
+            font-size: 0.7rem;
             font-weight: 700;
-            font-size: 0.8rem;
+            margin-right: 10px;
         }
-
-        .checklist-item span {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.92rem;
+        
+        .penalty-content {
+            flex: 1;
         }
-
-        /* 루브릭 테이블 */
-        .rubric-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 0.88rem;
-        }
-
-        .rubric-table th,
-        .rubric-table td {
-            padding: 14px 16px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            text-align: left;
-        }
-
-        .rubric-table th {
-            background: linear-gradient(135deg, rgba(69, 123, 157, 0.3), rgba(69, 123, 157, 0.15));
-            color: white;
+        
+        .penalty-title {
             font-weight: 600;
+            color: #c62828;
+            margin-bottom: 2px;
         }
-
-        .rubric-table td {
-            background: rgba(255, 255, 255, 0.03);
-            color: rgba(255, 255, 255, 0.9);
+        
+        .penalty-desc {
+            color: #666;
+            font-size: 0.78rem;
         }
-
-        .rubric-table td:first-child {
-            background: rgba(212, 163, 115, 0.08);
+        
+        .essay-table {
+            margin-top: 10px;
         }
-
-        .score-badge {
-            display: inline-block;
-            background: var(--accent-gold);
-            color: #1a1a2e;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 0.85rem;
-        }
-
-        /* FAQ */
-        .faq-item {
-            margin-bottom: 12px;
-        }
-
-        .faq-question {
-            width: 100%;
-            padding: 14px 18px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 10px;
+        
+        .essay-table th {
+            background: #1565c0;
             color: white;
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-family: inherit;
-            transition: all 0.3s ease;
         }
-
-        .faq-question:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .faq-question.open {
-            border-radius: 10px 10px 0 0;
-            border-bottom: none;
-        }
-
-        .faq-question .q-mark {
-            color: var(--accent-gold);
+        
+        .essay-table .score-col {
+            width: 50px;
+            text-align: center;
             font-weight: 700;
-            margin-right: 8px;
         }
-
-        .faq-question .arrow {
-            transition: transform 0.3s ease;
-            color: var(--accent-gold);
+        
+        .essay-table .level-col {
+            width: 70px;
+            text-align: center;
         }
-
-        .faq-question.open .arrow {
-            transform: rotate(180deg);
+        
+        .essay-table .note-col {
+            width: 60px;
+            text-align: center;
+            color: #666;
+            font-size: 0.75rem;
         }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-top: none;
-            border-radius: 0 0 10px 10px;
-            transition: max-height 0.4s ease;
+        
+        .example-box {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 14px;
+            margin-top: 10px;
         }
-
-        .faq-answer.open {
-            max-height: 300px;
-            padding: 16px 18px;
-        }
-
-        .faq-answer {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 0.9rem;
-            line-height: 1.65;
-        }
-
-        /* 운영 가이드 */
-        .guide-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .guide-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .guide-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 12px;
-            padding: 18px;
-        }
-
-        .guide-card h4 {
-            color: var(--accent-gold);
-            font-size: 1rem;
-            margin-bottom: 12px;
-        }
-
-        .guide-card ul {
-            color: rgba(255, 255, 255, 0.85);
+        
+        .example-box h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
             font-size: 0.88rem;
-            margin-left: 18px;
+        }
+        
+        .example-calc {
+            font-size: 0.82rem;
             line-height: 1.7;
         }
-
-        /* 플로팅 버튼 */
-        .floating-nav {
+        
+        .example-calc li {
+            margin-bottom: 4px;
+        }
+        
+        .example-total {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 2px solid #2e7d32;
+            font-weight: 700;
+            color: #2e7d32;
+        }
+        
+        .tip-box {
+            background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+            border: 1px solid #a5d6a7;
+            border-radius: 6px;
+            padding: 14px;
+            margin-top: 15px;
+        }
+        
+        .tip-box h4 {
+            color: #2e7d32;
+            margin-bottom: 8px;
+            font-size: 0.88rem;
+        }
+        
+        .tip-box ul {
+            margin-left: 18px;
+            font-size: 0.82rem;
+        }
+        
+        .tip-box li {
+            margin-bottom: 5px;
+        }
+        
+        .footer-note {
+            margin-top: 15px;
+            padding: 12px;
+            background: #fff3e0;
+            border: 1px solid #ffcc80;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            line-height: 1.65;
+        }
+        
+        .print-btn {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-coral));
+            background: #2c3e50;
             color: white;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 8px 24px rgba(212, 163, 115, 0.4);
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.3);
             transition: all 0.3s ease;
-            z-index: 1000;
+            font-family: inherit;
         }
-
-        .floating-nav:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(212, 163, 115, 0.5);
+        
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(44, 62, 80, 0.4);
         }
-
-        /* 반응형 */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 1.9rem;
-            }
-            
-            .glass-card {
-                padding: 24px;
-            }
-            
-            .section-title {
-                font-size: 1.2rem;
-            }
-            
-            .flowchart {
-                flex-direction: column;
-            }
-            
-            .flow-step {
-                width: 100%;
-            }
+        
+        .key-point {
+            color: #c62828;
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- 헤더 -->
-        <div class="hero-section">
-            <div class="hero-badge">📜 논술형 수행평가</div>
-            <h1 class="hero-title">갑신정변과 갑오개혁의<br>'두 길' 비교·평가</h1>
-            <p class="hero-subtitle">역사적 사고력 및 문제 해결력 평가</p>
-            <p class="hero-question">「왜 한 개혁은 3일 만에 무너지고, 다른 개혁은 제도로 남았나?」</p>
+        <div class="header">
+            <h1>📋 [교사용] 갑신정변 vs 갑오개혁 수행평가 채점기준표</h1>
+            <div class="subtitle">「왜 한 개혁은 3일 만에 무너지고, 다른 개혁은 제도로 남았나?」</div>
+            <div class="version">v2.0 | 과정 12점 + 논술 8점 = 총 20점</div>
         </div>
 
-        <!-- 시작 전 체크 -->
-        <div class="start-banner">
-            <h2>⚡ 시작 전 체크!</h2>
-            <div class="start-checklist">
-                <div class="start-item">
-                    <div class="check-circle">✓</div>
-                    <span>평가 시간: <strong>40분</strong></span>
-                </div>
-                <div class="start-item">
-                    <div class="check-circle">✓</div>
-                    <span>최종 글: <strong>500자 이상</strong></span>
-                </div>
-                <div class="start-item">
-                    <div class="check-circle">✓</div>
-                    <span>자료 활용: <strong>A~E 모두</strong></span>
-                </div>
-                <div class="start-item">
-                    <div class="check-circle">✓</div>
-                    <span>AI/대필: <strong>절대 금지</strong></span>
-                </div>
+        <!-- 메타 정보 -->
+        <div class="meta-info">
+            <div class="meta-item">
+                <strong>평가 유형</strong>
+                논술형
+            </div>
+            <div class="meta-item">
+                <strong>총점</strong>
+                20점
+            </div>
+            <div class="meta-item">
+                <strong>평가 시간</strong>
+                40분
+            </div>
+            <div class="meta-item">
+                <strong>최소 분량</strong>
+                500자 이상
+            </div>
+            <div class="meta-item">
+                <strong>평가 원칙</strong>
+                1점 단위 차등
             </div>
         </div>
 
-        <!-- 플로우차트 -->
-        <div class="glass-card">
-            <div class="section-title">
-                <div class="section-icon">📋</div>
-                수행평가 흐름 한눈에 보기
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- 1. 평가 요소 및 배점표 -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div class="section">
+            <div class="section-title blue">1. 평가 요소 및 배점표</div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>영역</th>
+                        <th>단계</th>
+                        <th>평가 요소 (문항)</th>
+                        <th>배점</th>
+                        <th>채점 기준 (상세 등급)</th>
+                        <th>점수</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 과정 영역 -->
+                    <tr>
+                        <td rowspan="5" class="area-cell" style="background: #e3f2fd; color: #1565c0;">과정<br>(12점)</td>
+                        <td class="step-cell">1단계</td>
+                        <td class="element-cell">
+                            <strong>페르소나 선택 및 유지</strong>
+                            <small>(입장 정하기)</small>
+                        </td>
+                        <td class="score-cell">2점</td>
+                        <td class="criteria-cell">
+                            <div class="level"><span class="level-badge high">[2점]</span> 페르소나를 선택하고, 이후 활동(5~6단계)까지 그 관점을 <strong>일관되게 유지</strong>함</div>
+                            <div class="level"><span class="level-badge low">[1점]</span> 선택은 했으나, 이후 글쓰기에서 자신의 입장이 드러나지 않음</div>
+                        </td>
+                        <td class="points-cell">2 / 1</td>
+                    </tr>
+                    <tr>
+                        <td class="step-cell">2단계</td>
+                        <td class="element-cell">
+                            <strong>자료 분석</strong>
+                            <small>(개혁의 필요성)</small>
+                        </td>
+                        <td class="score-cell">2점</td>
+                        <td class="criteria-cell">
+                            <div class="level"><span class="level-badge high">[2점]</span> 자료 A~E 중 1개 이상을 인용하여, 개혁이 필요했던 이유(모순/국제정세)를 <strong>논리적</strong>으로 서술함</div>
+                            <div class="level"><span class="level-badge low">[1점]</span> 자료 인용 없이 막연하게 서술하거나 내용이 빈약함</div>
+                        </td>
+                        <td class="points-cell">2 / 1</td>
+                    </tr>
+                    <tr>
+                        <td class="step-cell">3단계</td>
+                        <td class="element-cell">
+                            <strong>기초 사실 정리</strong>
+                            <small>(3문장 쓰기)</small>
+                        </td>
+                        <td class="score-cell">2점</td>
+                        <td class="criteria-cell">
+                            <div class="level"><span class="level-badge high">[2점]</span> 갑신정변/갑오개혁/공통목표에 대한 3문장이 <strong>역사적 사실(연도, 주체 등)과 일치</strong>함</div>
+                            <div class="level"><span class="level-badge low">[1점]</span> 내용 중 사실 관계 오류가 1개 이상 존재함</div>
+                        </td>
+                        <td class="points-cell">2 / 1</td>
+                    </tr>
+                    <tr>
+                        <td class="step-cell">4단계</td>
+                        <td class="element-cell">
+                            <strong>비교 분석 (표)</strong>
+                            <small>(공통점/차이점)</small>
+                        </td>
+                        <td class="score-cell">4점</td>
+                        <td class="criteria-cell">
+                            <div class="level"><span class="level-badge high">[4점]</span> 공통점(1)+차이점(2) 이상 제시하며, 비교 기준(주체, 방식 등)이 <strong>명확</strong>함</div>
+                            <div class="level"><span class="level-badge mid">[3점]</span> 공통점/차이점 개수는 맞으나, 비교 기준이 모호함</div>
+                            <div class="level"><span class="level-badge mid">[2점]</span> 차이점이 1개뿐이거나 단순 사실 나열에 그침</div>
+                            <div class="level"><span class="level-badge low">[1점]</span> 비교 내용에 역사적 오류가 많거나 칸을 다 채우지 못함</div>
+                        </td>
+                        <td class="points-cell">4 / 3<br>2 / 1</td>
+                    </tr>
+                    <tr>
+                        <td class="step-cell">5단계</td>
+                        <td class="element-cell">
+                            <strong>소통 규칙 만들기</strong>
+                            <small>(갈등 해결)</small>
+                        </td>
+                        <td class="score-cell">2점</td>
+                        <td class="criteria-cell">
+                            <div class="level"><span class="level-badge high">[2점]</span> 서로 다른 입장을 조율할 수 있는 <strong>구체적이고 실현 가능한</strong> 규칙 2가지를 제안함</div>
+                            <div class="level"><span class="level-badge low">[1점]</span> 규칙이 너무 추상적이거나(예: 사이좋게 지낸다) 1가지만 제시함</div>
+                        </td>
+                        <td class="points-cell">2 / 1</td>
+                    </tr>
+                    <!-- 논술 영역 -->
+                    <tr>
+                        <td class="area-cell" style="background: #fff3e0; color: #e65100;">논술<br>(8점)</td>
+                        <td class="step-cell">6단계</td>
+                        <td class="element-cell">
+                            <strong>최종 논술 작성</strong>
+                            <small>(종합적 사고력)</small>
+                        </td>
+                        <td class="score-cell">8점</td>
+                        <td class="criteria-cell">
+                            <strong>(아래 상세 루브릭 참조)</strong><br>
+                            필수 요소 포함 여부, 논리적 완결성, 비판적 사고 등을 종합 평가
+                        </td>
+                        <td class="points-cell">8 ~ 3</td>
+                    </tr>
+                    <!-- 합계 -->
+                    <tr style="background: #e8eaf6;">
+                        <td colspan="3" style="text-align: center; font-weight: 700;">총점</td>
+                        <td class="score-cell" style="background: #c5cae9;"><strong>20점</strong></td>
+                        <td colspan="2" style="text-align: center; color: #666;">(감점 요인 발생 시 총점에서 차감)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- 2. 최종 논술 상세 채점 기준 -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div class="section">
+            <div class="section-title orange">2. 최종 논술 상세 채점 기준 (8점 만점)</div>
+            
+            <div class="highlight-box yellow">
+                <strong>💡 평가 핵심:</strong> 단순 요약이 아니라 <span class="key-point">'자기 주장(판단)'</span>과 <span class="key-point">'선택한 개혁의 한계 인정'</span>이 포함되었는가?
             </div>
             
-            <div class="flowchart">
-                <div class="flow-step">
-                    <span class="flow-number">0</span>서약 작성
-                </div>
-                <span class="flow-arrow">→</span>
-                <div class="flow-step">
-                    <span class="flow-number">1</span>페르소나 선택
-                </div>
-                <span class="flow-arrow">→</span>
-                <div class="flow-step">
-                    <span class="flow-number">2</span>기초 사실 3문장
-                </div>
-                <span class="flow-arrow">→</span>
-                <div class="flow-step">
-                    <span class="flow-number">3</span>개혁 필요성 설명
-                </div>
-                <span class="flow-arrow">→</span>
-                <div class="flow-step">
-                    <span class="flow-number">4</span>비교 분석 (표+서술)
-                </div>
-                <span class="flow-arrow">→</span>
-                <div class="flow-step">
-                    <span class="flow-number">5</span>역사적 공감 + 소통 규칙
-                </div>
-                <span class="flow-arrow">→</span>
-                <div class="flow-step">
-                    <span class="flow-number">6</span>최종 논술 (500자↑)
-                </div>
-            </div>
-
-            <div class="rules-box">
-                <strong>✅ 핵심 규칙</strong><br>
-                • 자료 A~E를 <strong>모두</strong> 활용해야 해요 (사실 카드도 참고!)<br>
-                • 페르소나(역할)는 처음부터 끝까지 <strong>일관되게</strong> 유지해요<br>
-                • 최종 논술에서 "어떤 개혁이 조선에 적합했을지" <strong>내 생각</strong>을 꼭 써요<br>
-                • <strong>🔑 중요!</strong> 내가 선택한 개혁의 <strong>한계점</strong>도 함께 밝혀야 해요
+            <table class="essay-table">
+                <thead>
+                    <tr>
+                        <th class="score-col">점수</th>
+                        <th class="level-col">등급</th>
+                        <th>평가 기준</th>
+                        <th class="note-col">비고</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="score-col" style="background: #c8e6c9; color: #2e7d32;">8점</td>
+                        <td class="level-col"><span class="level-badge high">탁월</span></td>
+                        <td>
+                            <strong>모든 요소 충족 + 논리적 완결성</strong><br>
+                            • 필수 5요소(분석, 비교, 자기판단+한계인정, 페르소나, 규칙)를 모두 포함함<br>
+                            • 문단 간 연결이 매끄럽고, 역사적 근거(자료 활용)가 설득력 있음
+                        </td>
+                        <td class="note-col">Perfect</td>
+                    </tr>
+                    <tr>
+                        <td class="score-col" style="background: #dcedc8;">7점</td>
+                        <td class="level-col"><span class="level-badge high">우수</span></td>
+                        <td>
+                            <strong>필수 요소 충족 + 약간의 아쉬움</strong><br>
+                            • 필수 5요소는 모두 포함했으나, <strong>'한계 인정'</strong>이 형식적이거나<br>
+                            • 자료 활용이 구체적이지 않고 일반적인 서술에 그침
+                        </td>
+                        <td class="note-col">-1</td>
+                    </tr>
+                    <tr>
+                        <td class="score-col" style="background: #fff9c4;">6점</td>
+                        <td class="level-col"><span class="level-badge mid">보통</span></td>
+                        <td>
+                            <strong>필수 요소 1개 누락</strong><br>
+                            • 전체적인 흐름은 좋으나, <strong>'한계 인정'</strong> 또는 <strong>'소통 규칙'</strong> 중 하나가 빠짐<br>
+                            • 또는 자기 주장의 근거가 빈약함
+                        </td>
+                        <td class="note-col">-2</td>
+                    </tr>
+                    <tr>
+                        <td class="score-col" style="background: #ffe0b2;">5점</td>
+                        <td class="level-col"><span class="level-badge mid">미흡</span></td>
+                        <td>
+                            <strong>필수 요소 2개 누락</strong><br>
+                            • 사건의 요약(분석/비교)에만 치중하고 자기 생각이 없음<br>
+                            • 또는 페르소나 관점이 완전히 무시됨
+                        </td>
+                        <td class="note-col">-3</td>
+                    </tr>
+                    <tr>
+                        <td class="score-col" style="background: #ffccbc;">4점</td>
+                        <td class="level-col"><span class="level-badge low">부족</span></td>
+                        <td>
+                            <strong>내용 빈약</strong><br>
+                            • 분량은 채웠으나 핵심 질문(어떤 개혁이 적합했는지)에 대한 답이 없음<br>
+                            • 역사적 사실 오류가 글의 논지를 흐릴 정도로 심각함
+                        </td>
+                        <td class="note-col">-4</td>
+                    </tr>
+                    <tr>
+                        <td class="score-col" style="background: #ffcdd2; color: #c62828;">3점</td>
+                        <td class="level-col"><span class="level-badge low">최소</span></td>
+                        <td>
+                            <strong>불성실</strong><br>
+                            • 500자 미만이거나, 제시된 자료를 그대로 베껴 쓰기만 함<br>
+                            • 주제와 무관한 내용을 서술함
+                        </td>
+                        <td class="note-col">기본점수</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="highlight-box blue" style="margin-top: 12px;">
+                <strong>📌 '한계 인정'이란?</strong><br>
+                자신이 더 적합하다고 선택한 개혁의 <strong>한계점(문제점)</strong>을 함께 밝히는 것.<br>
+                <em style="font-size: 0.85rem;">※ 다른 주제 예시: "신라의 삼국통일이 의의가 크다고 생각한다. 다만, <u>외세의 힘을 빌렸고 대동강 이북 영토를 잃었다</u>는 점은 한계로 인정한다."</em>
             </div>
         </div>
 
-        <!-- 페르소나 선택 -->
-        <div class="glass-card">
-            <div class="section-title">
-                <div class="section-icon">🎭</div>
-                1단계: 나의 역할(페르소나) 선택
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- 3. 감점 기준표 -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div class="section">
+            <div class="section-title red">3. 감점 기준표 (Penalty)</div>
+            
+            <div class="penalty-list">
+                <div class="penalty-item">
+                    <div class="penalty-icon">-2점</div>
+                    <div class="penalty-content">
+                        <div class="penalty-title">분량 미달</div>
+                        <div class="penalty-desc">500자 미만 작성 시 일괄 적용</div>
+                    </div>
+                </div>
+                <div class="penalty-item">
+                    <div class="penalty-icon">-2점</div>
+                    <div class="penalty-content">
+                        <div class="penalty-title">자료 미활용</div>
+                        <div class="penalty-desc">제시된 자료(A~E)를 하나도 언급하지 않거나 내용에 녹여내지 않은 경우</div>
+                    </div>
+                </div>
+                <div class="penalty-item">
+                    <div class="penalty-icon">-1점</div>
+                    <div class="penalty-content">
+                        <div class="penalty-title">예시 복사</div>
+                        <div class="penalty-desc">가이드라인의 예시 문장을 그대로 복사 붙여넣기 한 경우</div>
+                    </div>
+                </div>
+                <div class="penalty-item">
+                    <div class="penalty-icon">-2점</div>
+                    <div class="penalty-content">
+                        <div class="penalty-title">반복 꼼수</div>
+                        <div class="penalty-desc">같은 문장을 무의미하게 반복하여 분량을 늘린 경우</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- 4. 점수 산출 예시 -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div class="section">
+            <div class="section-title green">4. 점수 산출 예시</div>
+            
+            <div class="example-box">
+                <h4>📝 학생 A의 경우</h4>
+                <ul class="example-calc">
+                    <li><strong>1단계 (페르소나):</strong> 선택 후 끝까지 유지함 → <strong>2점</strong></li>
+                    <li><strong>2단계 (자료 분석):</strong> 자료 인용하여 논리적으로 서술 → <strong>2점</strong></li>
+                    <li><strong>3단계 (기초 사실):</strong> 3문장 모두 정확함 → <strong>2점</strong></li>
+                    <li><strong>4단계 (비교표):</strong> 차이점 2개 썼으나 기준이 모호함 → <strong>3점</strong></li>
+                    <li><strong>5단계 (규칙):</strong> "싸우지 말자"라고만 씀(추상적) → <strong>1점</strong></li>
+                    <li><strong>6단계 (논술):</strong> 다 썼는데 '한계 인정'이 형식적임 → <strong>7점</strong></li>
+                </ul>
+                <div class="example-total">
+                    총점: 2 + 2 + 2 + 3 + 1 + 7 = <strong>17점</strong>
+                </div>
             </div>
             
-            <p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 16px; font-size: 0.95rem;">
-                아래 중 <strong>1개</strong>를 골라, 논술이 끝날 때까지 그 입장을 유지하세요.
-            </p>
-
-            <div class="persona-grid">
-                <div class="persona-card">
-                    <div class="persona-title">
-                        <span class="persona-number">①</span>급진 개화파 청년
-                    </div>
-                    <div class="persona-quote">"답답한 조선, 빨리 확 뜯어고쳐야 산다!"</div>
-                    <div class="persona-hint">
-                        <strong>💡 힌트:</strong> 일본 유학 경험, 서양 문물에 대한 동경, 청나라 간섭에 대한 답답함, 급하게 바꾸고 싶은 마음
-                    </div>
-                </div>
-                
-                <div class="persona-card">
-                    <div class="persona-title">
-                        <span class="persona-number">②</span>온건 개혁 관료
-                    </div>
-                    <div class="persona-quote">"현실적으로 법과 제도를 하나씩 바꿔야지."</div>
-                    <div class="persona-hint">
-                        <strong>💡 힌트:</strong> 기존 질서 속에서 일하는 사람, 급격한 변화에 대한 걱정, 실제로 법을 만들고 집행하는 입장
-                    </div>
-                </div>
-                
-                <div class="persona-card">
-                    <div class="persona-title">
-                        <span class="persona-number">③</span>동학농민군 참여 농민
-                    </div>
-                    <div class="persona-quote">"나랏님들 싸움엔 관심 없고, 내 빚 탕감과 신분 차별 철폐가 먼저요."</div>
-                    <div class="persona-hint">
-                        <strong>💡 힌트:</strong> 세금과 빚의 고통, 양반에 대한 분노, 개혁이 내 삶을 바꿔줄지에 대한 의문
-                    </div>
-                </div>
-                
-                <div class="persona-card">
-                    <div class="persona-title">
-                        <span class="persona-number">④</span>서울 상인
-                    </div>
-                    <div class="persona-quote">"세상이 바뀌는 건 좋은데, 장사 좀 편하게 해주시오."</div>
-                    <div class="persona-hint">
-                        <strong>💡 힌트:</strong> 혜상공국(특권 상인) 철폐에 대한 관심, 정변으로 인한 불안, 안정적인 장사 환경 희망
-                    </div>
-                </div>
-            </div>
-
-            <div class="warning-box">
-                <strong>⚠️ 중요!</strong> 5단계 '역사적 공감'과 6단계 '최종 논술'에서 반드시 내 페르소나 관점이 드러나야 해요!
-            </div>
-        </div>
-
-        <!-- 자료 섹션 -->
-        <div class="glass-card">
-            <div class="section-title">
-                <div class="section-icon">📚</div>
-                사료 꾸러미
-            </div>
-
-            <div class="warning-box" style="margin-bottom: 20px;">
-                <strong>⚠️ 주의:</strong> 아래 요약본은 '정답'이 아니라 '단서(Clue)'입니다.<br>
-                "이것이 의미하는 바가 무엇일까?"를 스스로 생각해서 적어야 좋은 점수를 받아요!
-            </div>
-
-            <div class="source-tabs">
-                <button class="tab-button active" onclick="switchTab('gapsin')">갑신정변 (A~C)</button>
-                <button class="tab-button" onclick="switchTab('gabo')">갑오개혁 (D~E)</button>
-                <button class="tab-button" onclick="switchTab('facts')">사실 카드</button>
-            </div>
-
-            <!-- 갑신정변 탭 -->
-            <div id="gapsin-tab" class="tab-content active">
-                <div class="source-card">
-                    <span class="source-label">자료 A</span>
-                    <div class="source-title">갑신정변 정령 14개조 (단서 요약)</div>
-                    <div class="source-content">
-                        <ul>
-                            <li><strong>(신분)</strong> "문벌(가문) 특권을 없애고, 능력으로 관직을 뽑자."</li>
-                            <li><strong>(재정/민생)</strong> "토지세 제도를 고쳐 부정을 막고, 환곡을 없애 백성 고통을 덜자."</li>
-                            <li><strong>(행정/권력)</strong> "불필요한 관청(규장각 등)과 혜상공국(특권 상인 보호 기구)을 없애자."</li>
-                            <li><strong>(정치 운영)</strong> "대신들이 매일 회의하여 결정하는 구조로 바꾸자."</li>
-                            <li><strong>(대외)</strong> "청나라에 대한 조공 허례허식을 없애자."</li>
-                        </ul>
-                    </div>
-                    <span class="source-keyword">💡 키워드: 신분 타파 / 민생 개선 / 청 간섭 배제</span>
-                </div>
-
-                <div class="source-card">
-                    <span class="source-label">자료 B</span>
-                    <div class="source-title">김옥균의 개혁 구상 (단서 요약)</div>
-                    <div class="source-content">
-                        <ul>
-                            <li>세상은 증기선·전신으로 변하는데 조선은 느리다. "말뿐인 공론(空論) 말고 당장 가능한 것부터 하자."</li>
-                            <li><strong>우선순위 3가지:</strong> ①위생(전염병 예방) ②농업·산업(먹고사는 문제) ③도로(물류 이동)</li>
-                            <li>도로가 뚫려야 운송이 쉬워지고 국력이 커진다고 보았다.</li>
-                        </ul>
-                    </div>
-                    <span class="source-keyword">💡 키워드: 근대화 절박함 / 실용적 개혁안</span>
-                </div>
-
-                <div class="source-card">
-                    <span class="source-label">자료 C</span>
-                    <div class="source-title">변란 이후의 여론 (단서 요약)</div>
-                    <div class="source-content">
-                        <ul>
-                            <li>개화파는 본래 명문가 출신으로 기대를 모았으나, 실패 후 분위기가 반전되었다.</li>
-                            <li>조정과 민간에서는 이들을 "외세와 결탁해 나라를 팔았다"며 비난했다.</li>
-                            <li>이로 인해 '개화'나 '외국과의 교류'를 입에 올리는 것조차 꺼리는 <strong>보수적 분위기</strong>가 강해졌다.</li>
-                        </ul>
-                    </div>
-                    <span class="source-keyword">💡 키워드: 실패 후 반동 / 개화 = 매국 인식</span>
-                </div>
-            </div>
-
-            <!-- 갑오개혁 탭 -->
-            <div id="gabo-tab" class="tab-content">
-                <div class="source-card">
-                    <span class="source-label highlight">자료 D</span>
-                    <div class="source-title">갑오개혁 주요 의안 (단서 요약)</div>
-                    <div class="source-content">
-                        <ul>
-                            <li><strong>[대외]</strong> 청나라와의 조약을 고치고, 각국에 공사(외교관)를 보내며 개국 기년을 사용한다.</li>
-                            <li><strong>[신분]</strong> 양반·평민 구별을 없애고(능력주의), 문관·무관 차별을 줄인다.</li>
-                            <li><strong>[인권]</strong> 연좌제(가족 처벌) 금지, 조혼 금지, 과부 재혼 허용, 노비제 및 인신매매 금지.</li>
-                            <li><strong>[운영]</strong> 평민도 정책 제안 가능(군국기무처), 관청 인력 효율적 조정.</li>
-                            <li><strong>[사회]</strong> 의복 제도를 간소화하고 통일한다.</li>
-                        </ul>
-                    </div>
-                    <span class="source-keyword">💡 키워드: 제도적 개혁 / 신분제 철폐 / 근대 법률</span>
-                </div>
-
-                <div class="source-card">
-                    <span class="source-label highlight">자료 E</span>
-                    <div class="source-title">내각 갈등과 국왕의 입장 (단서 요약)</div>
-                    <div class="source-content">
-                        <ul>
-                            <li><strong>상황:</strong> 일본 공사는 조선의 구파(옛 대신)와 신파(새 대신)가 화합하길 바랐으나 갈등이 심했다.</li>
-                            <li><strong>국왕의 불만:</strong> 군부(신파) 쪽에서 국왕 허락 없이 군대를 움직이거나(월권), 인사를 마음대로 했다고 비판.</li>
-                            <li><strong>국왕의 판단:</strong> 구파는 여전히 청나라에 기대려(사대) 하고, 신파는 진보적이나 국왕의 권위를 위협한다. 결국 "억지로 섞기보다 신파를 믿고 가겠다"고 결정.</li>
-                        </ul>
-                    </div>
-                    <span class="source-keyword">💡 키워드: 내부 갈등 / 왕권 vs 개혁파 / 합의 부재</span>
-                </div>
-            </div>
-
-            <!-- 사실 카드 탭 -->
-            <div id="facts-tab" class="tab-content">
-                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 16px; font-size: 0.92rem;">
-                    ※ 사료에 없는 역사적 결과를 참고하여 논술의 '결과' 부분을 작성하세요.
-                </p>
-                
-                <div class="fact-cards">
-                    <div class="fact-card">
-                        <div class="fact-title">📌 사실 카드 1: 갑신정변의 결과</div>
-                        <div class="fact-content">
-                            갑신정변은 1884년 급진 개화파가 정변을 일으켜 <strong>3일 천하</strong>로 끝났습니다. 실패 후 개화 세력은 죽거나 망명했고, 사회적으로 개화에 대한 인식이 나빠져 <strong>개혁의 흐름이 한동안 끊기는</strong> 결과를 낳았습니다.
-                        </div>
-                    </div>
-                    
-                    <div class="fact-card coral">
-                        <div class="fact-title">📌 사실 카드 2: 갑오개혁의 한계와 영향</div>
-                        <div class="fact-content">
-                            갑오개혁은 신분제 폐지 등 <strong>근대적 제도를 법적으로 확립</strong>하는 성과를 남겼습니다. 그러나 추진 과정에서 일본의 군사력과 간섭이 작용했고, <strong>백성의 지지를 받지 못한 채</strong>(단발령 반발 등) 진행되어, 이후 정세 변화에 따라 개혁의 주도권이 흔들리기도 했습니다.
-                        </div>
-                    </div>
+            <div class="example-box" style="margin-top: 12px;">
+                <h4>📝 학생 B의 경우</h4>
+                <ul class="example-calc">
+                    <li><strong>1단계 (페르소나):</strong> 선택만 하고 이후 드러나지 않음 → <strong>1점</strong></li>
+                    <li><strong>2단계 (자료 분석):</strong> 자료 인용 없이 막연히 서술 → <strong>1점</strong></li>
+                    <li><strong>3단계 (기초 사실):</strong> 연도 오류 1개 → <strong>1점</strong></li>
+                    <li><strong>4단계 (비교표):</strong> 공통점+차이점 명확함 → <strong>4점</strong></li>
+                    <li><strong>5단계 (규칙):</strong> 구체적인 규칙 2개 제시 → <strong>2점</strong></li>
+                    <li><strong>6단계 (논술):</strong> 한계 인정과 소통 규칙 누락 → <strong>5점</strong></li>
+                </ul>
+                <div class="example-total">
+                    총점: 1 + 1 + 1 + 4 + 2 + 5 = <strong>14점</strong>
                 </div>
             </div>
         </div>
 
-        <!-- 단계별 작성 가이드 -->
-        <div class="glass-card">
-            <div class="section-title">
-                <div class="section-icon">✍️</div>
-                단계별 작성 가이드
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- 5. 선생님 팁 -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div class="section">
+            <div class="section-title purple">5. 선생님 팁 (채점 포인트)</div>
+            
+            <div class="tip-box">
+                <h4>💡 변별력의 핵심: '한계 인정'</h4>
+                <ul>
+                    <li>상위권 학생들은 자기 주장의 약점을 스스로 인정하는 균형 잡힌 시각을 보여줍니다.<br>
+                    <em style="color: #666; font-size: 0.85rem;">※ 다른 주제 예시: "서희의 외교 담판이 더 효과적이었다고 생각하지만, 군사력 없이 외교만으로는 거란의 재침을 완전히 막기 어려웠다는 한계는 인정한다."</em></li>
+                    <li>중위권은 한계를 언급하긴 하나 "조금 문제가 있었다" 수준으로 형식적입니다.</li>
+                    <li>하위권은 자기 주장만 있고 한계 인정이 없거나, 아예 자기 주장 자체가 불분명합니다.</li>
+                </ul>
             </div>
-
-            <!-- 2단계: 기초 사실 -->
-            <div class="step-card">
-                <div class="step-header">
-                    <div class="step-number">2</div>
-                    <div class="step-title">기초 사실 3문장 쓰기</div>
-                </div>
-                <div class="step-content">
-                    아래 3가지를 각각 <strong>1문장(25~45자)</strong>으로 정리하세요.
-                    <ul>
-                        <li><strong>갑신정변</strong>에 대한 사실 1문장</li>
-                        <li><strong>갑오개혁</strong>에 대한 사실 1문장</li>
-                        <li>두 사건의 <strong>공통된 목표</strong>(또는 문제의식) 1문장</li>
-                    </ul>
-                </div>
-                <div class="example-toggle">
-                    <button class="example-toggle-btn" onclick="toggleExample(this)">
-                        <span>💡 이렇게 쓰면 돼요! (예시 보기)</span>
-                        <span class="arrow">▼</span>
-                    </button>
-                    <div class="example-content">
-                        <div class="example-content-inner">
-                            <strong>※ 아래는 '고구려의 대외 항쟁과 신라의 삼국통일'을 주제로 한 예시입니다. 실제 작성 시에는 갑신정변/갑오개혁에 대해 쓰세요!</strong><br><br>
-                            ① 고구려는 수·당의 침입에 맞서 살수대첩과 안시성 전투 등에서 승리하며 자주성을 지켰다.<br>
-                            ② 신라는 나당연합을 맺어 백제와 고구려를 멸망시킨 뒤 당나라 세력까지 몰아내며 삼국을 통일했다.<br>
-                            ③ 두 나라 모두 외세의 위협 속에서 민족의 생존과 영토를 지키려는 목표를 가졌다.
-                        </div>
-                    </div>
-                </div>
+            
+            <div class="tip-box" style="margin-top: 12px;">
+                <h4>💡 페르소나 채점 기준</h4>
+                <ul>
+                    <li><strong>2점:</strong> 글 속에서 <em style="color: #666; font-size: 0.85rem;">※ 다른 주제 예시: "나는 백제 유민으로서~", "신라 귀족인 나로서는~"</em>와 같이 <strong>입장이 명시적으로 드러남</strong></li>
+                    <li><strong>1점:</strong> 1단계에서 선택만 하고 이후 글에서 전혀 언급 없음</li>
+                </ul>
             </div>
-
-            <!-- 3단계: 개혁 필요성 -->
-            <div class="step-card">
-                <div class="step-header">
-                    <div class="step-number">3</div>
-                    <div class="step-title">왜 개혁이 필요했나? (자료 활용)</div>
-                </div>
-                <div class="step-content">
-                    자료 A~E를 읽고, 조선 사회에 <strong>왜 개혁이 필요했는지</strong> 150~200자로 정리하세요.
-                    <ul>
-                        <li>기존 조선 사회의 <strong>모순·문제점</strong></li>
-                        <li>백성의 <strong>고통</strong></li>
-                        <li><strong>국제 정세</strong> 변화</li>
-                    </ul>
-                </div>
-                <div class="tip-box">
-                    <div class="tip-title">💡 자료 활용 팁</div>
-                    <div class="tip-content">
-                        "자료 A에 따르면 ~이다. 이를 통해 ~를 알 수 있다."처럼 <strong>근거 + 해석</strong>을 함께 써야 해요!<br>
-                        단순히 자료 내용만 베끼면 좋은 점수를 받기 어려워요.
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4단계: 비교 분석 -->
-            <div class="step-card">
-                <div class="step-header">
-                    <div class="step-number">4</div>
-                    <div class="step-title">비교 분석 (표 + 서술)</div>
-                </div>
-                <div class="step-content">
-                    <strong>4-1. 비교 분석 표 채우기</strong>
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th style="width: 25%;">비교 기준</th>
-                                <th style="width: 37.5%;">갑신정변 (1884)</th>
-                                <th style="width: 37.5%;">갑오개혁 (1894)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>누가 추진했나?</td>
-                                <td><span class="table-hint">(예: 급진 개화파)</span></td>
-                                <td><span class="table-hint">(예: 김홍집 내각, 군국기무처)</span></td>
-                            </tr>
-                            <tr>
-                                <td>어떤 힘을 빌렸나?</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>어떤 반발이 있었나?</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>무엇이 남았나?</td>
-                                <td><span class="table-hint">(사실 카드 1 참고)</span></td>
-                                <td><span class="table-hint">(사실 카드 2 참고)</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
-                    <div style="margin-top: 20px;">
-                        <strong>4-2. 비교 분석 서술 (200~250자)</strong>
-                        <p style="color: rgba(255, 255, 255, 0.85); margin-top: 10px; line-height: 1.7;">
-                            위 표를 바탕으로 두 사건의 <strong>공통점 1가지</strong> + <strong>차이점 2가지 이상</strong>을 명확한 기준을 들어 서술하세요.
-                        </p>
-                    </div>
-                </div>
-                <div class="example-toggle">
-                    <button class="example-toggle-btn" onclick="toggleExample(this)">
-                        <span>💡 비교 분석 예시 보기</span>
-                        <span class="arrow">▼</span>
-                    </button>
-                    <div class="example-content">
-                        <div class="example-content-inner">
-                            <strong>※ 아래는 '서희의 외교 담판과 강감찬의 귀주대첩'을 주제로 한 예시입니다. 실제 작성 시에는 갑신정변/갑오개혁을 비교하세요!</strong><br><br>
-                            <strong>[공통점]</strong> 두 사건 모두 거란의 침입에 맞서 고려의 독립과 영토를 지키려는 목표를 가졌다.<br><br>
-                            <strong>[차이점 1: 대응 방식]</strong> 서희는 외교 담판을 통해 평화적으로 문제를 해결했지만, 강감찬은 귀주대첩에서 군사적 승리로 거란군을 물리쳤다.<br><br>
-                            <strong>[차이점 2: 결과]</strong> 서희는 강동 6주를 얻어 영토를 확장했고, 강감찬은 거란의 재침 의지를 꺾어 장기간 평화를 가져왔다.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 5단계: 역사적 공감 + 소통 규칙 -->
-            <div class="step-card">
-                <div class="step-header">
-                    <div class="step-number">5</div>
-                    <div class="step-title">역사적 공감 + 소통 규칙</div>
-                </div>
-                <div class="step-content">
-                    <strong>5-1. 역사적 공감 (100~150자)</strong>
-                    <p style="color: rgba(255, 255, 255, 0.85); margin: 10px 0; line-height: 1.7;">
-                        내 페르소나 입장에서 당시 상황을 바라보며, <strong>감정 1개</strong>(두려움/희망/분노/답답함 중 택1)와 함께 2~3문장으로 쓰세요.
-                    </p>
-                    
-                    <div style="margin-top: 20px;">
-                        <strong>5-2. 개혁 성공을 위한 소통 규칙 2개</strong>
-                        <p style="color: rgba(255, 255, 255, 0.85); margin: 10px 0; line-height: 1.7;">
-                            "서로 다른 이해관계를 가진 집단(관료·양반·농민·상인 등)이 함께 개혁을 성공시키려면 어떤 약속이 필요할까?"
-                        </p>
-                    </div>
-                </div>
-                <div class="example-toggle">
-                    <button class="example-toggle-btn" onclick="toggleExample(this)">
-                        <span>💡 소통 규칙 예시 보기</span>
-                        <span class="arrow">▼</span>
-                    </button>
-                    <div class="example-content">
-                        <div class="example-content-inner">
-                            <strong>※ 아래는 '고려 건국 후 호족 통합'을 주제로 한 예시입니다. 실제 작성 시에는 개혁 상황에 맞는 규칙을 쓰세요!</strong><br><br>
-                            <strong>[규칙 1: 상호 존중의 원칙]</strong> 지방 호족들의 기존 권한을 어느 정도 인정하면서, 중앙 정부와의 협력 관계를 맺는다. 일방적으로 권한을 빼앗지 않는다.<br><br>
-                            <strong>[규칙 2: 혼인을 통한 신뢰 구축]</strong> 왕실과 유력 호족 간의 혼인 동맹을 맺어 서로의 이익을 공유하고 반란의 위험을 줄인다.
-                        </div>
-                    </div>
-                </div>
-                <div class="tip-box">
-                    <div class="tip-title">💡 왜 소통 규칙이 필요할까?</div>
-                    <div class="tip-content">
-                        갑신정변은 백성의 지지 없이 급하게 진행되어 3일 만에 무너졌고, 갑오개혁도 단발령 같은 정책에서 백성의 반발을 샀어요.<br>
-                        → 개혁이 성공하려면 <strong>다양한 계층의 합의와 협력</strong>이 필요하다는 교훈을 담아 규칙을 만들어 보세요!
-                    </div>
-                </div>
-            </div>
-
-            <!-- 6단계: 최종 논술 -->
-            <div class="step-card" style="background: linear-gradient(135deg, rgba(212, 163, 115, 0.15), rgba(212, 163, 115, 0.05)); border-color: rgba(212, 163, 115, 0.3);">
-                <div class="step-header">
-                    <div class="step-number" style="background: linear-gradient(135deg, var(--accent-gold), var(--accent-coral));">6</div>
-                    <div class="step-title">최종 논술 (500자 이상)</div>
-                </div>
-                <div class="step-content">
-                    위 2~5단계에서 정리한 내용을 <strong>하나의 글</strong>로 완성하세요.
-                    
-                    <div class="warning-box" style="margin-top: 16px; background: linear-gradient(135deg, rgba(69, 123, 157, 0.2), rgba(69, 123, 157, 0.08)); border-color: rgba(69, 123, 157, 0.4);">
-                        <strong style="color: var(--accent-teal);">📝 필수 포함 요소</strong><br><br>
-                        ① <strong>사건 분석:</strong> 갑신정변과 갑오개혁 각각의 목표, 추진 방식, 한계 서술<br>
-                        ② <strong>비교 분석:</strong> 두 사건의 공통점 1가지 + 차이점 2가지 이상<br>
-                        ③ <strong>자기 판단 + 한계 인정:</strong> "어떤 개혁이 조선에 더 적합했을까?"에 대한 <strong>내 생각과 근거</strong> + <strong>내가 선택한 개혁의 한계점</strong>도 함께 밝히기<br>
-                        ④ <strong>페르소나 관점:</strong> 내가 선택한 역할의 입장이 드러나는 문단<br>
-                        ⑤ <strong>소통 규칙:</strong> 개혁 성공을 위한 협력·존중 관점의 규칙 2가지
-                    </div>
-                </div>
-                <div class="example-toggle">
-                    <button class="example-toggle-btn" onclick="toggleExample(this)">
-                        <span>💡 최종 논술 구조 예시 보기</span>
-                        <span class="arrow">▼</span>
-                    </button>
-                    <div class="example-content">
-                        <div class="example-content-inner">
-                            <strong>※ 아래는 '신라의 삼국통일 평가'를 주제로 한 예시 구조입니다. 실제 작성 시에는 갑신정변/갑오개혁에 대해 쓰세요!</strong><br><br>
-                            <strong>[도입]</strong> 7세기 한반도는 삼국이 치열하게 경쟁하던 시기였다. 신라는 당나라와 연합하여 백제와 고구려를 멸망시키고 삼국을 통일했다.<br><br>
-                            <strong>[사건 분석 + 비교]</strong> 나당연합의 형성 과정은 ... 통일 이후 당나라 세력을 몰아내는 과정은 ... 공통점은 ... 차이점으로는 첫째 ..., 둘째 ...<br><br>
-                            <strong>[자기 판단 + 한계 인정]</strong> 나는 신라의 삼국통일이 (긍정적/부정적)이라고 생각한다. 왜냐하면 ... <strong>다만, 대동강 이북의 영토를 잃었다는 한계가 있었다.</strong> 그럼에도 불구하고 ...<br><br>
-                            <strong>[페르소나 관점]</strong> (예: 백제 유민 입장에서) 나는 당시 ... 한 마음이었다. ...<br><br>
-                            <strong>[소통 규칙 + 마무리]</strong> 통일이 성공하려면 ... 규칙 1: ... 규칙 2: ...
-                        </div>
-                    </div>
-                </div>
+            
+            <div class="tip-box" style="margin-top: 12px;">
+                <h4>💡 비교 분석 4점 vs 3점</h4>
+                <ul>
+                    <li><strong>4점:</strong> <em style="color: #666; font-size: 0.85rem;">※ 다른 주제 예시: "대응 방식에서 차이가 있다. 서희는 외교 담판으로 해결했고, 강감찬은 군사적 승리로 해결했다."</em>처럼 <strong>기준이 명확</strong></li>
+                    <li><strong>3점:</strong> <em style="color: #666; font-size: 0.85rem;">※ 다른 주제 예시: "서희는 말로 했고, 강감찬은 싸워서 이겼다."</em>처럼 기준 없이 결과만 나열</li>
+                </ul>
             </div>
         </div>
 
-        <!-- 제출 전 체크리스트 -->
-        <div class="glass-card">
-            <div class="section-title">
-                <div class="section-icon">✅</div>
-                제출 전 체크리스트
-            </div>
-
-            <div class="checklist">
-                <div class="checklist-item">
-                    <div class="checkbox" onclick="toggleCheck(this)"></div>
-                    <span>기초 사실 3문장을 정확하게 썼나요?</span>
-                </div>
-                <div class="checklist-item">
-                    <div class="checkbox" onclick="toggleCheck(this)"></div>
-                    <span>자료 A~E를 모두 활용했나요?</span>
-                </div>
-                <div class="checklist-item">
-                    <div class="checkbox" onclick="toggleCheck(this)"></div>
-                    <span>공통점 1개 + 차이점 2개 이상을 썼나요?</span>
-                </div>
-                <div class="checklist-item">
-                    <div class="checkbox" onclick="toggleCheck(this)"></div>
-                    <span>"어떤 개혁이 적합했을지" 내 생각을 썼나요?</span>
-                </div>
-                <div class="checklist-item">
-                    <div class="checkbox" onclick="toggleCheck(this)"></div>
-                    <span><strong>내가 선택한 개혁의 한계점</strong>도 함께 썼나요?</span>
-                </div>
-                <div class="checklist-item">
-                    <div class="checkbox" onclick="toggleCheck(this)"></div>
-                    <span>페르소나 관점이 일관되게 드러나나요?</span>
-                </div>
-                <div class="checklist-item">
-                    <div class="checkbox" onclick="toggleCheck(this)"></div>
-                    <span>소통 규칙 2개를 구체적으로 썼나요?</span>
-                </div>
-                <div class="checklist-item">
-                    <div class="checkbox" onclick="toggleCheck(this)"></div>
-                    <span>최종 글이 500자 이상인가요?</span>
-                </div>
-                <div class="checklist-item">
-                    <div class="checkbox" onclick="toggleCheck(this)"></div>
-                    <span>맞춤법과 문장 연결을 확인했나요?</span>
-                </div>
-            </div>
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- 6. 사실 오류 체크리스트 -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div class="section">
+            <div class="section-title teal">6. 사실 오류 체크리스트 (3단계 감점 사유)</div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">✗</th>
+                        <th style="width: 45%;">오류 내용</th>
+                        <th>정답</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center; color: #c62828; font-weight: bold;">✗</td>
+                        <td>"갑신정변이 <strong>1894년</strong>에 일어났다"</td>
+                        <td>1884년</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; color: #c62828; font-weight: bold;">✗</td>
+                        <td>"갑오개혁이 <strong>1884년</strong>에 일어났다"</td>
+                        <td>1894년</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; color: #c62828; font-weight: bold;">✗</td>
+                        <td>"갑신정변이 <strong>성공</strong>하여 제도가 바뀌었다"</td>
+                        <td>3일 만에 실패</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; color: #c62828; font-weight: bold;">✗</td>
+                        <td>"갑신정변은 <strong>청나라</strong>의 도움으로 진행되었다"</td>
+                        <td>일본의 도움 (청나라가 진압)</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; color: #c62828; font-weight: bold;">✗</td>
+                        <td>"갑오개혁은 <strong>외세 개입 없이</strong> 자주적으로 진행되었다"</td>
+                        <td>일본의 군사적 영향 아래 진행</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; color: #c62828; font-weight: bold;">✗</td>
+                        <td>"<strong>동학농민운동과 갑신정변</strong>이 같은 해에 일어났다"</td>
+                        <td>동학농민운동 1894년 / 갑신정변 1884년</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <!-- FAQ -->
-        <div class="glass-card">
-            <div class="section-title">
-                <div class="section-icon">❓</div>
-                자주 묻는 질문
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">
-                    <span><span class="q-mark">Q.</span> 자료 A~E를 다 써야 하나요?</span>
-                    <span class="arrow">▼</span>
-                </button>
-                <div class="faq-answer">
-                    네! 자료 A~E를 <strong>모두</strong> 활용해야 해요. 하지만 모든 자료를 똑같은 비중으로 쓸 필요는 없어요. 핵심이 되는 자료 2~3개를 깊이 있게 활용하고, 나머지는 보조적으로 언급해도 괜찮아요.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">
-                    <span><span class="q-mark">Q.</span> "어떤 개혁이 적합했을지"는 정답이 있나요?</span>
-                    <span class="arrow">▼</span>
-                </button>
-                <div class="faq-answer">
-                    아니요! <strong>정답이 없는 문제</strong>예요. 갑신정변이든 갑오개혁이든, 또는 "둘 다 한계가 있었다"든 어떤 주장이든 괜찮아요. 중요한 건 <strong>근거를 들어 논리적으로 설명</strong>하는 거예요.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">
-                    <span><span class="q-mark">Q.</span> "한계 인정"이 뭔가요? 꼭 써야 하나요?</span>
-                    <span class="arrow">▼</span>
-                </button>
-                <div class="faq-answer">
-                    네, 꼭 써야 해요! 내가 더 적합하다고 선택한 개혁의 <strong>문제점(한계)</strong>도 함께 밝히는 거예요.<br><br>
-                    <strong>※ 다른 주제 예시:</strong> "신라의 삼국통일이 의의가 크다고 생각한다. <strong>다만, 외세(당나라)의 힘을 빌렸고, 대동강 이북의 영토를 잃었다는 점은 한계로 인정한다.</strong>"<br><br>
-                    → 이처럼 자신의 주장에도 약점이 있음을 인정하면 균형 잡힌 시각을 보여줄 수 있어서 높은 점수를 받아요!
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">
-                    <span><span class="q-mark">Q.</span> 페르소나를 꼭 유지해야 하나요?</span>
-                    <span class="arrow">▼</span>
-                </button>
-                <div class="faq-answer">
-                    네! 선택한 역할(급진 개화파/온건 관료/농민/상인)의 관점이 <strong>5단계와 6단계</strong>에서 반드시 드러나야 해요. 중간에 역할을 바꾸면 감점이에요. 처음 선택한 역할로 끝까지 일관되게 쓰세요!
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">
-                    <span><span class="q-mark">Q.</span> 소통 규칙이 뭔지 모르겠어요.</span>
-                    <span class="arrow">▼</span>
-                </button>
-                <div class="faq-answer">
-                    개혁이 성공하려면 <strong>다양한 계층(양반, 농민, 상인 등)이 협력</strong>해야 해요. 그런데 역사적으로 갑신정변과 갑오개혁 모두 백성의 동의 없이 진행되어 문제가 생겼죠. 그래서 "이런 약속이 있었다면 더 좋았을 텐데"라는 생각을 규칙으로 만들어 보는 거예요!
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">
-                    <span><span class="q-mark">Q.</span> 500자가 안 돼요!</span>
-                    <span class="arrow">▼</span>
-                </button>
-                <div class="faq-answer">
-                    각 단계별 내용을 조금씩 더 구체적으로 써보세요. 특히 <strong>비교 분석</strong>에서 차이점을 더 자세히 설명하거나, <strong>자기 판단</strong>에서 근거를 추가하면 자연스럽게 늘어나요. 단, 같은 말 반복은 감점이에요!
-                </div>
-            </div>
+        <!-- 푸터 -->
+        <div class="footer-note">
+            <strong>📌 채점 시 유의사항</strong><br><br>
+            • <strong>"어떤 개혁이 적합했을지"는 정답이 없음</strong> → 근거의 논리성과 한계 인정 여부만 평가<br>
+            • 페르소나는 1단계 선택과 5~6단계 서술의 <strong>일관성</strong> 확인<br>
+            • 자료 활용은 "베끼기"가 아닌 <strong>"해석"</strong>이 있어야 2점<br>
+            • AI, 번역기, 대필 사용 및 답안 공유 적발 시 <strong>재작성 또는 0점</strong> 조치<br>
+            • 과정 최저 5점 + 논술 최저 3점 = <strong>전체 최저점 8점</strong>
         </div>
-
     </div>
-
-    <div class="floating-nav" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-        ↑
-    </div>
-
-    <script>
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            
-            event.target.classList.add('active');
-            document.getElementById(tabName + '-tab').classList.add('active');
-        }
-
-        function toggleExample(btn) {
-            btn.classList.toggle('open');
-            const content = btn.nextElementSibling;
-            content.classList.toggle('open');
-        }
-
-        function toggleFaq(btn) {
-            const answer = btn.nextElementSibling;
-            const isOpen = answer.classList.contains('open');
-            
-            document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
-            document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('open'));
-            
-            if (!isOpen) {
-                answer.classList.add('open');
-                btn.classList.add('open');
-            }
-        }
-
-        function toggleCheck(checkbox) {
-            checkbox.classList.toggle('checked');
-        }
-
-        // 스크롤 애니메이션
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.glass-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'all 0.6s ease-out';
-            observer.observe(card);
-        });
-    </script>
+    
+    <button class="print-btn no-print" onclick="window.print()">🖨️ 인쇄</button>
 </body>
 </html>
